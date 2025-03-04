@@ -16,7 +16,7 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       title: "Data-Driven Planning",
       description: "Make informed decisions with comprehensive audience insights and market data",
       icon: <Database className="h-12 w-12 text-vtion-purple" />,
-      link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
+      link: "https://app.powerbi.com/groups/me/reports/45a63991-a020-4973-8bd1-1723cfc468df/ReportSection9080411317a00a12631a?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
     },
     {
       title: "Seamless Activation",
@@ -28,13 +28,13 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       title: "Accurate Measurement",
       description: "Track performance with precise metrics and insightful analytics",
       icon: <PieChart className="h-12 w-12 text-vtion-purple" />,
-      link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
+      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
     },
     {
       title: "Audience Insights",
       description: "Understand your audience with detailed demographic and behavioral data",
       icon: <Users className="h-12 w-12 text-vtion-purple" />,
-      link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
+      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
     },
   ];
 
