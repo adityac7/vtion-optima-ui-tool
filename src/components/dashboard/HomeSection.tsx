@@ -42,19 +42,27 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
     <div className="space-y-8 animate-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature, index) => (
-          <Card key={index} className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300">
-            <CardHeader className="pb-2">
-              <div className="mb-4">{feature.icon}</div>
-              <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-white/90">{feature.description}</CardDescription>
-              <a href={feature.link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
-                View Dashboard →
-              </a>
-            </CardContent>
-            <div className="absolute inset-0 bg-gradient-to-r from-vtion-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Card>
+          <a 
+            key={index} 
+            href={feature.link} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="block hover:no-underline"
+          >
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300 h-full cursor-pointer">
+              <CardHeader className="pb-2">
+                <div className="mb-4">{feature.icon}</div>
+                <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-white/90">{feature.description}</CardDescription>
+                <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
+                  View Dashboard →
+                </div>
+              </CardContent>
+              <div className="absolute inset-0 bg-gradient-to-r from-vtion-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </Card>
+          </a>
         ))}
       </div>
 
