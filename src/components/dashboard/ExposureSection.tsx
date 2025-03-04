@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area } from 'recharts';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 
@@ -34,6 +34,27 @@ const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
     { frequency: '4', users: 3200 },
     { frequency: '5', users: 2700 },
     { frequency: '6+', users: 6500 },
+  ];
+
+  // Daypart analysis data
+  const daypartData = [
+    { daypart: 'Early Morning (5-9am)', impressions: 1200, reach: 800, frequency: 1.5 },
+    { daypart: 'Morning (9am-12pm)', impressions: 2500, reach: 1600, frequency: 1.6 },
+    { daypart: 'Afternoon (12-5pm)', impressions: 3800, reach: 2200, frequency: 1.7 },
+    { daypart: 'Evening (5-8pm)', impressions: 4500, reach: 2800, frequency: 1.6 },
+    { daypart: 'Prime Time (8-11pm)', impressions: 5200, reach: 3100, frequency: 1.7 },
+    { daypart: 'Late Night (11pm-2am)', impressions: 2800, reach: 1500, frequency: 1.9 },
+    { daypart: 'Overnight (2-5am)', impressions: 900, reach: 600, frequency: 1.5 },
+  ];
+
+  // Exposure trends data
+  const trendData = [
+    { week: 'Week 1', tv: 2400, digital: 1800, print: 1200, radio: 900 },
+    { week: 'Week 2', tv: 2100, digital: 2100, print: 1100, radio: 800 },
+    { week: 'Week 3', tv: 2500, digital: 2400, print: 1000, radio: 850 },
+    { week: 'Week 4', tv: 2300, digital: 2800, print: 900, radio: 800 },
+    { week: 'Week 5', tv: 2200, digital: 3100, print: 800, radio: 750 },
+    { week: 'Week 6', tv: 2000, digital: 3400, print: 700, radio: 700 },
   ];
 
   const COLORS = ['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d', '#a4de6c'];
@@ -208,11 +229,35 @@ const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
             </TabsContent>
 
             <TabsContent value="daypart">
-              <div className="text-white">Daypart analysis content</div>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={daypartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="daypart" stroke="rgba(255,255,255,0.7)" />
+                  <YAxis yAxisId="left" orientation="left" stroke="rgba(255,255,255,0.7)" />
+                  <YAxis yAxisId="right" orientation="right" stroke="rgba(255,255,255,0.7)" />
+                  <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                  <Legend wrapperStyle={{ color: 'white' }} />
+                  <Bar yAxisId="left" dataKey="impressions" name="Impressions" fill="#8884d8" />
+                  <Bar yAxisId="left" dataKey="reach" name="Reach" fill="#82ca9d" />
+                  <Bar yAxisId="right" dataKey="frequency" name="Frequency" fill="#ffc658" />
+                </BarChart>
+              </ResponsiveContainer>
             </TabsContent>
 
             <TabsContent value="trend">
-              <div className="text-white">Exposure trends content</div>
+              <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={trendData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="week" stroke="rgba(255,255,255,0.7)" />
+                  <YAxis stroke="rgba(255,255,255,0.7)" />
+                  <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                  <Legend wrapperStyle={{ color: 'white' }} />
+                  <Area type="monotone" dataKey="tv" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                  <Area type="monotone" dataKey="digital" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                  <Area type="monotone" dataKey="print" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                  <Area type="monotone" dataKey="radio" stackId="1" stroke="#ff8042" fill="#ff8042" />
+                </AreaChart>
+              </ResponsiveContainer>
             </TabsContent>
           </Tabs>
         </CardContent>

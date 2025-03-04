@@ -22,10 +22,30 @@ const ImpactSection = ({ userType = 'advertiser' }: ImpactSectionProps) => {
     { channel: 'Social', value: 40 },
     { channel: 'Search', value: 30 },
     { channel: 'Display', value: 20 },
-    { channel: 'Email', value: 10 },
+    { channel: 'CTV', value: 10 },
+    { channel: 'Browser', value: 15 },
   ];
 
-  const COLORS = ['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d'];
+  // Data for detailed analysis tab
+  const detailedAnalysisData = [
+    { campaign: 'Alpha', roi: 3.2, cost: 1200, revenue: 3840 },
+    { campaign: 'Beta', roi: 2.8, cost: 1500, revenue: 4200 },
+    { campaign: 'Gamma', roi: 4.5, cost: 800, revenue: 3600 },
+    { campaign: 'Delta', roi: 1.9, cost: 2000, revenue: 3800 },
+    { campaign: 'Epsilon', roi: 3.7, cost: 1100, revenue: 4070 },
+  ];
+
+  // Data for campaign comparison
+  const campaignComparisonData = [
+    { name: 'Jan', Campaign1: 4000, Campaign2: 2400, Campaign3: 1800 },
+    { name: 'Feb', Campaign1: 3000, Campaign2: 1398, Campaign3: 2800 },
+    { name: 'Mar', Campaign1: 2000, Campaign2: 9800, Campaign3: 2200 },
+    { name: 'Apr', Campaign1: 2780, Campaign2: 3908, Campaign3: 2000 },
+    { name: 'May', Campaign1: 1890, Campaign2: 4800, Campaign3: 2500 },
+    { name: 'Jun', Campaign1: 2390, Campaign2: 3800, Campaign3: 2100 },
+  ];
+
+  const COLORS = ['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d', '#a4de6c'];
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -122,11 +142,33 @@ const ImpactSection = ({ userType = 'advertiser' }: ImpactSectionProps) => {
             </TabsContent>
 
             <TabsContent value="detailed">
-              <div className="text-white">Detailed ROI analysis content</div>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={detailedAnalysisData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="campaign" stroke="rgba(255,255,255,0.7)" />
+                  <YAxis stroke="rgba(255,255,255,0.7)" />
+                  <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                  <Legend wrapperStyle={{ color: 'white' }} />
+                  <Bar dataKey="roi" name="ROI" fill="#8884d8" />
+                  <Bar dataKey="cost" name="Cost ($)" fill="#82ca9d" />
+                  <Bar dataKey="revenue" name="Revenue ($)" fill="#ffc658" />
+                </BarChart>
+              </ResponsiveContainer>
             </TabsContent>
 
             <TabsContent value="comparison">
-              <div className="text-white">Campaign comparison content</div>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={campaignComparisonData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="name" stroke="rgba(255,255,255,0.7)" />
+                  <YAxis stroke="rgba(255,255,255,0.7)" />
+                  <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                  <Legend wrapperStyle={{ color: 'white' }} />
+                  <Line type="monotone" dataKey="Campaign1" stroke="#8884d8" />
+                  <Line type="monotone" dataKey="Campaign2" stroke="#82ca9d" />
+                  <Line type="monotone" dataKey="Campaign3" stroke="#ffc658" />
+                </LineChart>
+              </ResponsiveContainer>
             </TabsContent>
           </Tabs>
         </CardContent>

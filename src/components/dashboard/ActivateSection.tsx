@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ShoppingCart, Tv, Gamepad2, Film } from "lucide-react";
 
 export interface ActivateSectionProps {
   userType?: string;
@@ -13,14 +14,41 @@ export interface ActivateSectionProps {
 
 const ActivateSection = ({ userType = "advertiser" }: ActivateSectionProps) => {
   const [selectedPlatform, setSelectedPlatform] = useState<string>("");
+  const [selectedAudience, setSelectedAudience] = useState<string>("");
 
   const platforms = [
     { id: "youtube", name: "YouTube" },
     { id: "facebook", name: "Facebook" },
     { id: "instagram", name: "Instagram" },
-    { id: "tiktok", name: "TikTok" },
     { id: "spotify", name: "Spotify" },
     { id: "twitter", name: "Twitter" },
+  ];
+
+  const predefinedAudiences = [
+    { 
+      id: "ecommerce", 
+      name: "Ecommerce Shoppers", 
+      description: "Users who frequently shop online", 
+      icon: <ShoppingCart className="h-5 w-5" />
+    },
+    { 
+      id: "netflix", 
+      name: "Netflix Content Consumers", 
+      description: "Active Netflix subscribers and viewers", 
+      icon: <Film className="h-5 w-5" />
+    },
+    { 
+      id: "gamers", 
+      name: "Gamers", 
+      description: "Users interested in gaming content", 
+      icon: <Gamepad2 className="h-5 w-5" />
+    },
+    { 
+      id: "shampoo", 
+      name: "Shampoo Purchasers", 
+      description: "Recent purchasers of shampoo products", 
+      icon: <Tv className="h-5 w-5" />
+    },
   ];
 
   const audienceTypes = [
@@ -33,6 +61,7 @@ const ActivateSection = ({ userType = "advertiser" }: ActivateSectionProps) => {
   const handleActivate = () => {
     // Placeholder for activation logic
     console.log("Campaign activated on:", selectedPlatform);
+    console.log("Selected audience:", selectedAudience);
   };
 
   return (
@@ -50,9 +79,6 @@ const ActivateSection = ({ userType = "advertiser" }: ActivateSectionProps) => {
               <TabsList className="bg-black/20 mb-4">
                 <TabsTrigger value="audience" className="data-[state=active]:bg-vtion-purple text-white">
                   Audience
-                </TabsTrigger>
-                <TabsTrigger value="creative" className="data-[state=active]:bg-vtion-purple text-white">
-                  Creative
                 </TabsTrigger>
                 <TabsTrigger value="budget" className="data-[state=active]:bg-vtion-purple text-white">
                   Budget
@@ -80,24 +106,33 @@ const ActivateSection = ({ userType = "advertiser" }: ActivateSectionProps) => {
                 </div>
 
                 <div className="space-y-2">
+                  <Label className="text-white">Predefined Audiences</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {predefinedAudiences.map((audience) => (
+                      <div 
+                        key={audience.id}
+                        className={`p-3 border rounded-lg cursor-pointer transition-all duration-200 flex items-center space-x-3 ${
+                          selectedAudience === audience.id 
+                            ? "border-vtion-purple bg-vtion-purple/20" 
+                            : "border-white/20 hover:border-white/40"
+                        }`}
+                        onClick={() => setSelectedAudience(audience.id)}
+                      >
+                        <div className="flex-shrink-0 text-vtion-purple">
+                          {audience.icon}
+                        </div>
+                        <div>
+                          <p className="font-medium text-white">{audience.name}</p>
+                          <p className="text-white/70 text-sm">{audience.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor="audience-size" className="text-white">Audience Size</Label>
                   <Input id="audience-size" placeholder="Enter audience size" className="bg-black/20 border-gray-700 text-white" />
-                </div>
-              </TabsContent>
-
-              <TabsContent value="creative" className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="creative-name" className="text-white">Creative Name</Label>
-                  <Input id="creative-name" placeholder="Enter creative name" className="bg-black/20 border-gray-700 text-white" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="creative-upload" className="text-white">Upload Creative</Label>
-                  <div className="border-2 border-dashed border-gray-700 rounded-lg p-6 text-center">
-                    <p className="text-white/70">Drag and drop your creative file here, or click to browse</p>
-                    <Button variant="outline" className="mt-4 border-white/30 text-white bg-white/10 hover:bg-white/20">
-                      Browse Files
-                    </Button>
-                  </div>
                 </div>
               </TabsContent>
 
