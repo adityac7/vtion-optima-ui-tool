@@ -59,9 +59,9 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       </div>
 
       <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
-        <h2 className="text-2xl font-bold mb-4 text-white">Welcome to VTION Optima</h2>
+        <h2 className="text-2xl font-bold mb-4 text-white">Welcome to VTION Connect</h2>
         <p className="text-white/90 mb-6">
-          VTION Optima is a comprehensive platform designed to enhance your media planning, 
+          VTION Connect is a comprehensive platform designed to enhance your media planning, 
           activation, and measurement capabilities. Navigate through the tabs above to explore 
           different features tailored to your needs as a{" "}
           <span className="font-semibold text-vtion-purple">{userType}</span>.

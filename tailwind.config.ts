@@ -57,6 +57,7 @@ export default {
         "vtion-purple": "hsl(var(--vtion-purple))",
         "vtion-darkPurple": "hsl(var(--vtion-darkPurple))",
         "vtion-lightPurple": "hsl(var(--vtion-lightPurple))",
+        "vtion-navy": "#0c0e2d",
       },
       borderRadius: {
         lg: "var(--radius)",

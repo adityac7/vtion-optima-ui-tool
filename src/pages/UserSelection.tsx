@@ -45,19 +45,19 @@ const UserSelection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-vtion-darkPurple flex items-center justify-center p-6">
+    <div className="min-h-screen bg-vtion-navy flex items-center justify-center p-6">
       <div className="absolute inset-0 bg-gradient-to-r from-vtion-purple/20 to-vtion-lightPurple/20" />
       
       <div className="container max-w-4xl">
         <div className="flex justify-center mb-8">
           <img 
-            src="/lovable-uploads/bc89a4f0-9aa4-4729-b125-9258b8ae1d13.png" 
+            src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
             alt="VTION Logo" 
             className="h-20"
           />
         </div>
         
-        <h1 className="text-3xl font-bold text-white text-center mb-4">VTION Optima</h1>
+        <h1 className="text-3xl font-bold text-white text-center mb-4">VTION Connect</h1>
         <p className="text-white/90 text-center mb-10">Select your role to continue</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

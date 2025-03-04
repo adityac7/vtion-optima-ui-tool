@@ -60,7 +60,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-vtion-darkPurple to-gray-900 text-white">
+    <div className="min-h-screen bg-vtion-navy text-white">
       {/* Top Navigation Bar */}
       <header className="bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -71,7 +71,7 @@ const Index = () => {
               className="text-white"
             >
               <img 
-                src="/lovable-uploads/bc89a4f0-9aa4-4729-b125-9258b8ae1d13.png" 
+                src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
                 alt="VTION Logo" 
                 className="h-8"
               />
@@ -98,7 +98,7 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">
-            Welcome to VTION Optima
+            Welcome to VTION Connect
           </h1>
           <p className="text-white/90 mt-2">
             Your comprehensive platform for data-driven media planning, activation, and measurement
