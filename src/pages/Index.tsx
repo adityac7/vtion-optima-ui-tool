@@ -5,10 +5,9 @@ import {
   Home, BarChart, Play, TrendingUp, Eye, 
   Building2, Target, Newspaper, Search 
 } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
 
 // Feature components
@@ -72,7 +71,7 @@ const Index = () => {
               className="text-white"
             >
               <img 
-                src="/lovable-uploads/9afa94b9-ec6c-4ba7-b341-99a193733f2f.png" 
+                src="/lovable-uploads/bc89a4f0-9aa4-4729-b125-9258b8ae1d13.png" 
                 alt="VTION Logo" 
                 className="h-8"
               />

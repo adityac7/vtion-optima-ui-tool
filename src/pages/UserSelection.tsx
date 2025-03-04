@@ -51,9 +51,9 @@ const UserSelection = () => {
       <div className="container max-w-4xl">
         <div className="flex justify-center mb-8">
           <img 
-            src="/lovable-uploads/9afa94b9-ec6c-4ba7-b341-99a193733f2f.png" 
+            src="/lovable-uploads/bc89a4f0-9aa4-4729-b125-9258b8ae1d13.png" 
             alt="VTION Logo" 
-            className="h-16"
+            className="h-20"
           />
         </div>
         

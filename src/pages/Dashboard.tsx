@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -29,7 +30,7 @@ const Dashboard = () => {
       <div className="container mx-auto px-4 py-8">
         <header className="text-center mb-8">
           <img 
-            src="/lovable-uploads/9afa94b9-ec6c-4ba7-b341-99a193733f2f.png" 
+            src="/lovable-uploads/bc89a4f0-9aa4-4729-b125-9258b8ae1d13.png" 
             alt="VTION LOGO" 
             className="h-16 mx-auto mb-6"
           />
@@ -63,11 +64,11 @@ const Dashboard = () => {
               </TabsContent>
               
               <TabsContent value="impact" className="mt-0">
-                <ImpactSection userType={userType} />
+                <ImpactSection />
               </TabsContent>
               
               <TabsContent value="exposure" className="mt-0">
-                <ExposureSection userType={userType} />
+                <ExposureSection />
               </TabsContent>
             </div>
           </Tabs>

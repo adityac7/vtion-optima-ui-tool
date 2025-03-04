@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Login from "./pages/Login";
 import UserSelection from "./pages/UserSelection";
 import Index from "./pages/Index";
@@ -14,6 +15,9 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <Toaster />
       <Sonner />
       <BrowserRouter>

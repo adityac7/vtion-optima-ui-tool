@@ -1,271 +1,177 @@
-import { useState } from 'react';
-import { Bar, Line, BarChart as RechartBarChart, LineChart as RechartLineChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, Smartphone, ShoppingCart, BarChart, Laptop, Tv } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Label } from '@/components/ui/label';
 
-const appUsageData = [
-  { name: 'Week 1', 'Pre-Campaign': 1000, 'Post-Campaign': 1300 },
-  { name: 'Week 2', 'Pre-Campaign': 1200, 'Post-Campaign': 1600 },
-  { name: 'Week 3', 'Pre-Campaign': 1100, 'Post-Campaign': 1900 },
-  { name: 'Week 4', 'Pre-Campaign': 1300, 'Post-Campaign': 2200 },
-];
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
-const appDownloadsData = [
-  { name: 'Week 1', 'Pre-Campaign': 300, 'Post-Campaign': 600 },
-  { name: 'Week 2', 'Pre-Campaign': 400, 'Post-Campaign': 800 },
-  { name: 'Week 3', 'Pre-Campaign': 350, 'Post-Campaign': 950 },
-  { name: 'Week 4', 'Pre-Campaign': 450, 'Post-Campaign': 1100 },
-];
+export interface ImpactSectionProps {
+  userType?: string;
+}
 
-const cartAdditionsData = [
-  { name: 'Week 1', 'Pre-Campaign': 80, 'Post-Campaign': 120 },
-  { name: 'Week 2', 'Pre-Campaign': 90, 'Post-Campaign': 170 },
-  { name: 'Week 3', 'Pre-Campaign': 85, 'Post-Campaign': 190 },
-  { name: 'Week 4', 'Pre-Campaign': 95, 'Post-Campaign': 220 },
-];
+const ImpactSection = ({ userType = 'advertiser' }: ImpactSectionProps) => {
+  // Data for charts
+  const performanceData = [
+    { month: 'Jan', impressions: 2400, clicks: 400, conversions: 240 },
+    { month: 'Feb', impressions: 1398, clicks: 300, conversions: 210 },
+    { month: 'Mar', impressions: 9800, clicks: 700, conversions: 320 },
+    { month: 'Apr', impressions: 3908, clicks: 500, conversions: 280 },
+    { month: 'May', impressions: 4800, clicks: 600, conversions: 290 },
+    { month: 'Jun', impressions: 3800, clicks: 550, conversions: 270 },
+  ];
 
-const mtaAnalyticsData = [
-  { name: 'Display', value: 30 },
-  { name: 'Social', value: 25 },
-  { name: 'Search', value: 20 },
-  { name: 'Video', value: 15 },
-  { name: 'Browser', value: 10 },
-  { name: 'Connected TV', value: 12 },
-];
+  const channelData = [
+    { channel: 'Social', value: 40 },
+    { channel: 'Search', value: 30 },
+    { channel: 'Display', value: 20 },
+    { channel: 'Email', value: 10 },
+  ];
 
-const ImpactSection = () => {
-  const [appType, setAppType] = useState("all");
-  const [downloadType, setDownloadType] = useState("all");
-  const [productCategory, setProductCategory] = useState("all");
-
-  const appTypes = ["All Apps", "Social Media", "E-commerce", "Entertainment", "Utility"];
-  
-  const productCategories = ["All Categories", "Shampoo", "Health Food Drinks", "Mobile Phones", "Electronics", "Clothing"];
+  const COLORS = ['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d'];
 
   return (
-    <div className="space-y-6 animate-fade-in">
-      <h2 className="text-2xl font-bold">Impact Analysis</h2>
-      <p className="text-white/70 mb-6">
-        Measure the real-world impact of your campaigns with these comprehensive analytics tools.
-      </p>
+    <div className="space-y-8 animate-fade-in">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader>
+            <CardTitle className="text-xl text-white">Campaign Performance</CardTitle>
+            <CardDescription className="text-white/90">
+              Track impressions, clicks, and conversions over time
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={performanceData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                <XAxis dataKey="month" stroke="rgba(255,255,255,0.7)" />
+                <YAxis stroke="rgba(255,255,255,0.7)" />
+                <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                <Legend wrapperStyle={{ color: 'white' }} />
+                <Line type="monotone" dataKey="impressions" stroke="#8884d8" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="clicks" stroke="#82ca9d" />
+                <Line type="monotone" dataKey="conversions" stroke="#ffc658" />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
 
-      <Tabs defaultValue="app-usage" className="w-full">
-        <TabsList className="bg-black/20 backdrop-blur-md border border-white/20 p-1 mb-6">
-          <TabsTrigger value="app-usage" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <Smartphone className="mr-2 h-4 w-4" />
-            App Usage
-          </TabsTrigger>
-          <TabsTrigger value="app-downloads" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <Activity className="mr-2 h-4 w-4" />
-            App Downloads
-          </TabsTrigger>
-          <TabsTrigger value="cart-additions" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <ShoppingCart className="mr-2 h-4 w-4" />
-            Cart Additions
-          </TabsTrigger>
-          <TabsTrigger value="mta-analytics" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <BarChart className="mr-2 h-4 w-4" />
-            MTA Analytics
-          </TabsTrigger>
-        </TabsList>
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader>
+            <CardTitle className="text-xl text-white">Channel Distribution</CardTitle>
+            <CardDescription className="text-white/90">
+              View performance by marketing channel
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={channelData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  paddingAngle={5}
+                  dataKey="value"
+                  label={({ channel, percent }) => `${channel}: ${(percent * 100).toFixed(0)}%`}
+                  labelLine={false}
+                >
+                  {channelData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+              </PieChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
 
-        <TabsContent value="app-usage" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <CardTitle className="flex items-center">
-                  <Smartphone className="mr-2 h-5 w-5 text-vtion-purple" />
-                  App Usage - Pre vs Post Campaign
-                </CardTitle>
-                <div className="w-full sm:w-auto max-w-xs">
-                  <Label htmlFor="app-type" className="text-sm text-white/80 mb-1 block">Filter by App Type</Label>
-                  <Select value={appType} onValueChange={setAppType}>
-                    <SelectTrigger id="app-type" className="bg-black/30 border-white/30 text-white">
-                      <SelectValue placeholder="All Apps" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-gray-700 text-white">
-                      {appTypes.map((type, index) => (
-                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')} className="text-white focus:bg-vtion-purple focus:text-white">
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartBarChart
-                    data={appUsageData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <XAxis dataKey="name" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                    <Legend />
-                    <Bar dataKey="Pre-Campaign" fill="#8884d8" />
-                    <Bar dataKey="Post-Campaign" fill="#82ca9d" />
-                  </RechartBarChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  The data shows a significant increase in app usage following the campaign, with Week 4 
-                  showing the highest impact (+69% compared to pre-campaign levels).
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+      <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+        <CardHeader>
+          <CardTitle className="text-xl text-white">ROI Analysis</CardTitle>
+          <CardDescription className="text-white/90">
+            Measure your return on investment across campaigns
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="overview" className="w-full">
+            <TabsList className="bg-black/20 mb-4">
+              <TabsTrigger value="overview" className="data-[state=active]:bg-vtion-purple text-white">
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="detailed" className="data-[state=active]:bg-vtion-purple text-white">
+                Detailed Analysis
+              </TabsTrigger>
+              <TabsTrigger value="comparison" className="data-[state=active]:bg-vtion-purple text-white">
+                Campaign Comparison
+              </TabsTrigger>
+            </TabsList>
 
-        <TabsContent value="app-downloads" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <CardTitle className="flex items-center">
-                  <Activity className="mr-2 h-5 w-5 text-vtion-purple" />
-                  App Downloads - Pre vs Post Campaign
-                </CardTitle>
-                <div className="w-full sm:w-auto max-w-xs">
-                  <Label htmlFor="download-type" className="text-sm text-white/80 mb-1 block">Filter by App Type</Label>
-                  <Select value={downloadType} onValueChange={setDownloadType}>
-                    <SelectTrigger id="download-type" className="bg-black/30 border-white/30 text-white">
-                      <SelectValue placeholder="All Apps" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-gray-700 text-white">
-                      {appTypes.map((type, index) => (
-                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')} className="text-white focus:bg-vtion-purple focus:text-white">
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartLineChart
-                    data={appDownloadsData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <XAxis dataKey="name" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                    <Legend />
-                    <Line type="monotone" dataKey="Pre-Campaign" stroke="#8884d8" />
-                    <Line type="monotone" dataKey="Post-Campaign" stroke="#82ca9d" />
-                  </RechartLineChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  App downloads increased by an average of 144% post-campaign, with the most significant 
-                  growth observed in Week 4 (+144% increase).
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+            <TabsContent value="overview">
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={performanceData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="month" stroke="rgba(255,255,255,0.7)" />
+                  <YAxis stroke="rgba(255,255,255,0.7)" />
+                  <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                  <Legend wrapperStyle={{ color: 'white' }} />
+                  <Bar dataKey="impressions" name="Impressions" fill="#8884d8" />
+                  <Bar dataKey="clicks" name="Clicks" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            </TabsContent>
 
-        <TabsContent value="cart-additions" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <CardTitle className="flex items-center">
-                  <ShoppingCart className="mr-2 h-5 w-5 text-vtion-purple" />
-                  Cart Additions - Pre vs Post Campaign
-                </CardTitle>
-                <div className="w-full sm:w-auto max-w-xs">
-                  <Label htmlFor="product-category" className="text-sm text-white/80 mb-1 block">Filter by Product Category</Label>
-                  <Select value={productCategory} onValueChange={setProductCategory}>
-                    <SelectTrigger id="product-category" className="bg-black/30 border-white/30 text-white">
-                      <SelectValue placeholder="All Categories" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-gray-700 text-white">
-                      {productCategories.map((category, index) => (
-                        <SelectItem key={index} value={category.toLowerCase().replace(' ', '-')} className="text-white focus:bg-vtion-purple focus:text-white">
-                          {category}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartBarChart
-                    data={cartAdditionsData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <XAxis dataKey="name" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                    <Legend />
-                    <Bar dataKey="Pre-Campaign" fill="#8884d8" />
-                    <Bar dataKey="Post-Campaign" fill="#82ca9d" />
-                  </RechartBarChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  Cart additions saw substantial growth after the campaign launch, with a peak 
-                  increase of 132% by Week 4 compared to pre-campaign metrics.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+            <TabsContent value="detailed">
+              <div className="text-white">Detailed ROI analysis content</div>
+            </TabsContent>
 
-        <TabsContent value="mta-analytics" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BarChart className="mr-2 h-5 w-5 text-vtion-purple" />
-                Multi-Touch Attribution Analysis
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartBarChart
-                    data={mtaAnalyticsData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <XAxis dataKey="name" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                    <Legend />
-                    <Bar dataKey="value" fill="#9b87f5" />
-                  </RechartBarChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  Display and Social channels show the highest contribution to conversions at 30% and 25% 
-                  respectively. Browser and Connected TV (CTV) channels contributed 10% and 12% respectively.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+            <TabsContent value="comparison">
+              <div className="text-white">Campaign comparison content</div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl text-white">Total Impressions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-white">1.2M</div>
+            <p className="text-green-400 flex items-center mt-2">
+              <span>↑ 12.5%</span>
+              <span className="text-white/70 text-sm ml-2">vs. last period</span>
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl text-white">Conversion Rate</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-white">3.2%</div>
+            <p className="text-red-400 flex items-center mt-2">
+              <span>↓ 0.8%</span>
+              <span className="text-white/70 text-sm ml-2">vs. last period</span>
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl text-white">Average CPM</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-white">$4.50</div>
+            <p className="text-green-400 flex items-center mt-2">
+              <span>↑ 5.2%</span>
+              <span className="text-white/70 text-sm ml-2">efficiency improvement</span>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };

@@ -30,9 +30,9 @@ const Login = () => {
       <Card className="relative w-full max-w-md mx-4 p-8 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
         <div className="flex flex-col items-center space-y-6">
           <img 
-            src="/lovable-uploads/9afa94b9-ec6c-4ba7-b341-99a193733f2f.png" 
+            src="/lovable-uploads/bc89a4f0-9aa4-4729-b125-9258b8ae1d13.png" 
             alt="VTION Logo" 
-            className="h-12 mb-6"
+            className="h-16 mb-6"
           />
           
           <form onSubmit={handleLogin} className="w-full space-y-4">

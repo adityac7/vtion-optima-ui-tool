@@ -1,220 +1,222 @@
 
-import { Bar, Pie, Line, BarChart as RechartBarChart, LineChart as RechartLineChart, PieChart as RechartPieChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, BarChart, PieChart, TrendingUp } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
-// Dummy data for charts
-const blsData = [
-  { name: 'Jan', value: 4000 },
-  { name: 'Feb', value: 3000 },
-  { name: 'Mar', value: 5000 },
-  { name: 'Apr', value: 6000 },
-  { name: 'May', value: 7000 },
-  { name: 'Jun', value: 8000 },
-];
+export interface ExposureSectionProps {
+  userType?: string;
+}
 
-const reachData = [
-  { name: '18-24', male: 2000, female: 2400 },
-  { name: '25-34', male: 4000, female: 3800 },
-  { name: '35-44', male: 3000, female: 3200 },
-  { name: '45-54', male: 1500, female: 1800 },
-  { name: '55+', male: 1000, female: 1200 },
-];
+const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
+  // Sample data
+  const mediaExposureData = [
+    { platform: 'TV', impressions: 3800, index: 105 },
+    { platform: 'Digital', impressions: 4200, index: 122 },
+    { platform: 'OOH', impressions: 1500, index: 95 },
+    { platform: 'Radio', impressions: 2300, index: 88 },
+    { platform: 'Print', impressions: 1800, index: 75 },
+  ];
 
-const otrData = [
-  { name: 'Target Audience', value: 70 },
-  { name: 'Non-Target', value: 30 },
-];
+  const demographicData = [
+    { name: '18-24', value: 20 },
+    { name: '25-34', value: 35 },
+    { name: '35-44', value: 25 },
+    { name: '45-54', value: 15 },
+    { name: '55+', value: 5 },
+  ];
 
-const COLORS = ['#9b87f5', '#D6BCFA'];
+  const frequencyData = [
+    { frequency: '1', users: 5000 },
+    { frequency: '2', users: 4200 },
+    { frequency: '3', users: 3800 },
+    { frequency: '4', users: 3200 },
+    { frequency: '5', users: 2700 },
+    { frequency: '6+', users: 6500 },
+  ];
 
-const frequencyData = [
-  { name: '1x', value: 35 },
-  { name: '2x', value: 25 },
-  { name: '3x', value: 15 },
-  { name: '4x', value: 10 },
-  { name: '5x+', value: 15 },
-];
+  const COLORS = ['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d', '#a4de6c'];
 
-const ExposureSection = () => {
   return (
-    <div className="space-y-6 animate-fade-in">
-      <h2 className="text-2xl font-bold">Exposure Metrics</h2>
-      <p className="text-white/70 mb-6">
-        Track how your campaigns are reaching and engaging with your audience.
-      </p>
+    <div className="space-y-8 animate-fade-in">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold text-white">Media Exposure Analytics</h2>
+        
+        <div className="flex space-x-4">
+          <div className="w-40">
+            <Label htmlFor="time-period" className="text-white mb-1 block">Time Period</Label>
+            <Select>
+              <SelectTrigger id="time-period" className="bg-black/20 border-gray-700 text-white">
+                <SelectValue placeholder="Last 30 days" />
+              </SelectTrigger>
+              <SelectContent className="bg-slate-800 border-gray-700">
+                <SelectItem value="7days" className="text-gray-200 focus:bg-vtion-purple focus:text-white">Last 7 days</SelectItem>
+                <SelectItem value="30days" className="text-gray-200 focus:bg-vtion-purple focus:text-white">Last 30 days</SelectItem>
+                <SelectItem value="90days" className="text-gray-200 focus:bg-vtion-purple focus:text-white">Last 90 days</SelectItem>
+                <SelectItem value="year" className="text-gray-200 focus:bg-vtion-purple focus:text-white">Last year</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="w-40">
+            <Label htmlFor="geography" className="text-white mb-1 block">Geography</Label>
+            <Select>
+              <SelectTrigger id="geography" className="bg-black/20 border-gray-700 text-white">
+                <SelectValue placeholder="All Regions" />
+              </SelectTrigger>
+              <SelectContent className="bg-slate-800 border-gray-700">
+                <SelectItem value="all" className="text-gray-200 focus:bg-vtion-purple focus:text-white">All Regions</SelectItem>
+                <SelectItem value="north" className="text-gray-200 focus:bg-vtion-purple focus:text-white">North</SelectItem>
+                <SelectItem value="south" className="text-gray-200 focus:bg-vtion-purple focus:text-white">South</SelectItem>
+                <SelectItem value="east" className="text-gray-200 focus:bg-vtion-purple focus:text-white">East</SelectItem>
+                <SelectItem value="west" className="text-gray-200 focus:bg-vtion-purple focus:text-white">West</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      </div>
 
-      <Tabs defaultValue="bls" className="w-full">
-        <TabsList className="bg-black/20 backdrop-blur-md border border-white/20 p-1 mb-6">
-          <TabsTrigger value="bls" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <Activity className="mr-2 h-4 w-4" />
-            BLS
-          </TabsTrigger>
-          <TabsTrigger value="reach" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <TrendingUp className="mr-2 h-4 w-4" />
-            Reach
-          </TabsTrigger>
-          <TabsTrigger value="otr" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <PieChart className="mr-2 h-4 w-4" />
-            On-Target Reach
-          </TabsTrigger>
-          <TabsTrigger value="frequency" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
-            <BarChart className="mr-2 h-4 w-4" />
-            Frequency
-          </TabsTrigger>
-        </TabsList>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl text-white">Total Impressions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-white">13.6M</div>
+            <p className="text-green-400 flex items-center mt-2">
+              <span>↑ 8.3%</span>
+              <span className="text-white/70 text-sm ml-2">vs. last period</span>
+            </p>
+          </CardContent>
+        </Card>
 
-        <TabsContent value="bls" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Activity className="mr-2 h-5 w-5 text-vtion-purple" />
-                Brand Lift Score (BLS) - Monthly Trend
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartLineChart
-                    data={blsData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <XAxis dataKey="name" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                    <Legend />
-                    <Line type="monotone" dataKey="value" stroke="#9b87f5" activeDot={{ r: 8 }} />
-                  </RechartLineChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  Brand Lift Score shows a steady increase over the six-month period, with a 
-                  particularly strong performance in May and June, indicating growing brand awareness.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl text-white">Reach</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-white">5.2M</div>
+            <p className="text-green-400 flex items-center mt-2">
+              <span>↑ 3.7%</span>
+              <span className="text-white/70 text-sm ml-2">vs. last period</span>
+            </p>
+          </CardContent>
+        </Card>
 
-        <TabsContent value="reach" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <TrendingUp className="mr-2 h-5 w-5 text-vtion-purple" />
-                Reach by Demographic
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartBarChart
-                    data={reachData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <XAxis dataKey="name" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                    <Legend />
-                    <Bar dataKey="male" fill="#9b87f5" />
-                    <Bar dataKey="female" fill="#D6BCFA" />
-                  </RechartBarChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  The 25-34 age group shows the highest reach across both genders, with slightly higher reach 
-                  among females in most age segments. The campaign effectively reached the primary target 
-                  demographic of young adults.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl text-white">Frequency</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-4xl font-bold text-white">2.6</div>
+            <p className="text-red-400 flex items-center mt-2">
+              <span>↓ 0.3</span>
+              <span className="text-white/70 text-sm ml-2">vs. last period</span>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
 
-        <TabsContent value="otr" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <PieChart className="mr-2 h-5 w-5 text-vtion-purple" />
-                On-Target Reach (OTR)
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full flex items-center justify-center">
-                <ResponsiveContainer width="70%" height="100%">
-                  <RechartPieChart>
-                    <Pie
-                      data={otrData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                      outerRadius={120}
-                      fill="#8884d8"
-                      dataKey="value"
-                    >
-                      {otrData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
-                    </Pie>
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                  </RechartPieChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  70% of campaign impressions reached the intended target audience, indicating good targeting 
-                  efficiency. There's opportunity to further optimize targeting to improve the current 
-                  OTR metric.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader>
+            <CardTitle className="text-xl text-white">Media Exposure by Platform</CardTitle>
+            <CardDescription className="text-white/90">
+              Distribution of impressions across different media platforms
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={mediaExposureData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                <XAxis dataKey="platform" stroke="rgba(255,255,255,0.7)" />
+                <YAxis stroke="rgba(255,255,255,0.7)" />
+                <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                <Legend wrapperStyle={{ color: 'white' }} />
+                <Bar dataKey="impressions" name="Impressions (000s)" fill="#8884d8" />
+                <Bar dataKey="index" name="Index" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
 
-        <TabsContent value="frequency" className="mt-0">
-          <Card className="bg-white/10 backdrop-blur-md border border-white/20">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BarChart className="mr-2 h-5 w-5 text-vtion-purple" />
+        <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+          <CardHeader>
+            <CardTitle className="text-xl text-white">Audience Demographics</CardTitle>
+            <CardDescription className="text-white/90">
+              Age distribution of exposed audience
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={demographicData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  paddingAngle={5}
+                  dataKey="value"
+                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                >
+                  {demographicData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+              </PieChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+        <CardHeader>
+          <CardTitle className="text-xl text-white">Exposure Analysis</CardTitle>
+          <CardDescription className="text-white/90">
+            Detailed insights into media exposure patterns
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="frequency" className="w-full">
+            <TabsList className="bg-black/20 mb-4">
+              <TabsTrigger value="frequency" className="data-[state=active]:bg-vtion-purple text-white">
                 Frequency Distribution
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartBarChart
-                    data={frequencyData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <XAxis dataKey="name" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
-                    <Tooltip contentStyle={{ backgroundColor: '#333', borderColor: '#555' }} />
-                    <Legend />
-                    <Bar dataKey="value" fill="#9b87f5" />
-                  </RechartBarChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="mt-6 p-4 bg-white/5 rounded-lg">
-                <h4 className="font-medium mb-2">Analysis</h4>
-                <p className="text-white/80">
-                  35% of the audience was exposed to the campaign just once, while 25% saw it twice. 
-                  There's a good distribution across frequency levels, with 15% of users seeing the ad 
-                  5 or more times, which may indicate potential for frequency capping optimization.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+              </TabsTrigger>
+              <TabsTrigger value="daypart" className="data-[state=active]:bg-vtion-purple text-white">
+                Daypart Analysis
+              </TabsTrigger>
+              <TabsTrigger value="trend" className="data-[state=active]:bg-vtion-purple text-white">
+                Exposure Trends
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="frequency">
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={frequencyData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="frequency" stroke="rgba(255,255,255,0.7)" />
+                  <YAxis stroke="rgba(255,255,255,0.7)" />
+                  <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
+                  <Legend wrapperStyle={{ color: 'white' }} />
+                  <Bar dataKey="users" name="Users" fill="#8884d8" />
+                </BarChart>
+              </ResponsiveContainer>
+            </TabsContent>
+
+            <TabsContent value="daypart">
+              <div className="text-white">Daypart analysis content</div>
+            </TabsContent>
+
+            <TabsContent value="trend">
+              <div className="text-white">Exposure trends content</div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
     </div>
   );
 };
