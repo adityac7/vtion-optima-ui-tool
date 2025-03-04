@@ -49,7 +49,16 @@ const UserSelection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-vtion-purple/20 to-vtion-lightPurple/20" />
       
       <div className="container max-w-4xl">
-        <h1 className="text-3xl font-bold text-white text-center mb-12">Select Your Role</h1>
+        <div className="flex justify-center mb-8">
+          <img 
+            src="/lovable-uploads/9afa94b9-ec6c-4ba7-b341-99a193733f2f.png" 
+            alt="VTION Logo" 
+            className="h-16"
+          />
+        </div>
+        
+        <h1 className="text-3xl font-bold text-white text-center mb-4">VTION Optima</h1>
+        <p className="text-white/90 text-center mb-10">Select your role to continue</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {userTypes.map((type) => {
@@ -63,7 +72,7 @@ const UserSelection = () => {
                 <div className="relative z-10 flex flex-col items-center text-white">
                   <Icon className="w-12 h-12 mb-4 text-vtion-purple" />
                   <h3 className="text-xl font-semibold mb-2">{type.title}</h3>
-                  <p className="text-white/70 text-center">{type.description}</p>
+                  <p className="text-white/90 text-center">{type.description}</p>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-vtion-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Card>

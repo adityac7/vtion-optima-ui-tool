@@ -8,7 +8,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
 
 // Feature components
@@ -72,8 +72,8 @@ const Index = () => {
               className="text-white"
             >
               <img 
-                src="/lovable-uploads/84273f88-53d9-4228-9118-22283fe7b9f1.png" 
-                alt="Vtion Logo" 
+                src="/lovable-uploads/9afa94b9-ec6c-4ba7-b341-99a193733f2f.png" 
+                alt="VTION Logo" 
                 className="h-8"
               />
             </Button>
@@ -88,7 +88,7 @@ const Index = () => {
             <Button 
               variant="outline" 
               onClick={() => navigate("/login")}
-              className="border-white/30 text-white hover:bg-white/20"
+              className="border-white/30 text-white bg-white/10 hover:bg-white/20"
             >
               Logout
             </Button>
@@ -99,9 +99,9 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">
-            Welcome to Vtion Optima
+            Welcome to VTION Optima
           </h1>
-          <p className="text-white/70 mt-2">
+          <p className="text-white/90 mt-2">
             Your comprehensive platform for data-driven media planning, activation, and measurement
           </p>
         </div>
@@ -146,6 +146,12 @@ const Index = () => {
           </TabsContent>
         </Tabs>
       </main>
+      
+      <footer className="bg-white/5 backdrop-blur-md border-t border-white/10 py-4 mt-10">
+        <div className="container mx-auto px-4 text-center text-white/50 text-sm">
+          <p>© {new Date().getFullYear()} VTION. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };
