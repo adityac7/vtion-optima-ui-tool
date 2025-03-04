@@ -2,9 +2,11 @@
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Building2, Target, Newspaper, Search } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const UserSelection = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const userTypes = [
     {
@@ -34,7 +36,12 @@ const UserSelection = () => {
   ];
 
   const handleSelect = (type: string) => {
-    navigate("/dashboard");
+    toast({
+      title: "Role Selected",
+      description: `You've selected the ${type} role`,
+    });
+    
+    navigate(`/dashboard?type=${type}`);
   };
 
   return (
