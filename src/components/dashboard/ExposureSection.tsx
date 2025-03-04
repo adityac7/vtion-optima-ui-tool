@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area } from 'recharts';
@@ -12,11 +11,11 @@ export interface ExposureSectionProps {
 const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
   // Sample data
   const mediaExposureData = [
-    { platform: 'TV', impressions: 3800, index: 105 },
+    { platform: 'CTV', impressions: 3800, index: 105 },
     { platform: 'Digital', impressions: 4200, index: 122 },
     { platform: 'OOH', impressions: 1500, index: 95 },
-    { platform: 'Radio', impressions: 2300, index: 88 },
-    { platform: 'Print', impressions: 1800, index: 75 },
+    { platform: 'Browser', impressions: 2300, index: 88 },
+    { platform: 'Ecom', impressions: 1800, index: 75 },
   ];
 
   const demographicData = [
@@ -47,14 +46,14 @@ const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
     { daypart: 'Overnight (2-5am)', impressions: 900, reach: 600, frequency: 1.5 },
   ];
 
-  // Exposure trends data
+  // Updated Exposure trends data - replaced TV with CTV, print with Ecom, and radio with Browser
   const trendData = [
-    { week: 'Week 1', tv: 2400, digital: 1800, print: 1200, radio: 900 },
-    { week: 'Week 2', tv: 2100, digital: 2100, print: 1100, radio: 800 },
-    { week: 'Week 3', tv: 2500, digital: 2400, print: 1000, radio: 850 },
-    { week: 'Week 4', tv: 2300, digital: 2800, print: 900, radio: 800 },
-    { week: 'Week 5', tv: 2200, digital: 3100, print: 800, radio: 750 },
-    { week: 'Week 6', tv: 2000, digital: 3400, print: 700, radio: 700 },
+    { week: 'Week 1', ctv: 2400, digital: 1800, ecom: 1200, browser: 900 },
+    { week: 'Week 2', ctv: 2100, digital: 2100, ecom: 1100, browser: 800 },
+    { week: 'Week 3', ctv: 2500, digital: 2400, ecom: 1000, browser: 850 },
+    { week: 'Week 4', ctv: 2300, digital: 2800, ecom: 900, browser: 800 },
+    { week: 'Week 5', ctv: 2200, digital: 3100, ecom: 800, browser: 750 },
+    { week: 'Week 6', ctv: 2000, digital: 3400, ecom: 700, browser: 700 },
   ];
 
   const COLORS = ['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d', '#a4de6c'];
@@ -252,10 +251,10 @@ const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
                   <YAxis stroke="rgba(255,255,255,0.7)" />
                   <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
                   <Legend wrapperStyle={{ color: 'white' }} />
-                  <Area type="monotone" dataKey="tv" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                  <Area type="monotone" dataKey="ctv" stackId="1" stroke="#8884d8" fill="#8884d8" />
                   <Area type="monotone" dataKey="digital" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-                  <Area type="monotone" dataKey="print" stackId="1" stroke="#ffc658" fill="#ffc658" />
-                  <Area type="monotone" dataKey="radio" stackId="1" stroke="#ff8042" fill="#ff8042" />
+                  <Area type="monotone" dataKey="ecom" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                  <Area type="monotone" dataKey="browser" stackId="1" stroke="#ff8042" fill="#ff8042" />
                 </AreaChart>
               </ResponsiveContainer>
             </TabsContent>
