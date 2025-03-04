@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +50,11 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom VTION colors */
+    --vtion-purple: 260 84% 75%;
+    --vtion-darkPurple: 260 40% 10%;
+    --vtion-lightPurple: 260 84% 85%;
   }
 
   .dark {
@@ -87,6 +93,11 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Custom VTION colors in dark mode */
+    --vtion-purple: 260 84% 75%;
+    --vtion-darkPurple: 260 40% 10%;
+    --vtion-lightPurple: 260 84% 85%;
   }
 }
 
@@ -98,4 +109,47 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Light mode overrides */
+.light body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+.light .bg-white\/10 {
+  @apply bg-white/90;
+}
+
+.light .text-white {
+  @apply text-slate-900;
+}
+
+.light .text-white\/90 {
+  @apply text-slate-800;
+}
+
+.light .text-white\/80 {
+  @apply text-slate-700;
+}
+
+.light .text-white\/70 {
+  @apply text-slate-600;
+}
+
+.light .border-white\/20 {
+  @apply border-slate-200;
+}
+
+.light .border-white\/30 {
+  @apply border-slate-300;
+}
+
+/* Animation utilities */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in-out forwards;
 }

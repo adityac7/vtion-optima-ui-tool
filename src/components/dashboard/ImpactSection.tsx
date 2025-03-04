@@ -1,8 +1,11 @@
 
+import { useState } from 'react';
 import { Bar, Line, BarChart as RechartBarChart, LineChart as RechartLineChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, Smartphone, ShoppingCart, BarChart } from 'lucide-react';
+import { Activity, Smartphone, ShoppingCart, BarChart, Laptop, Tv } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
 
 // Dummy data for charts
 const appUsageData = [
@@ -31,10 +34,21 @@ const mtaAnalyticsData = [
   { name: 'Social', value: 25 },
   { name: 'Search', value: 20 },
   { name: 'Video', value: 15 },
-  { name: 'Email', value: 10 },
+  { name: 'Browser', value: 10 },
+  { name: 'Connected TV', value: 12 },
 ];
 
 const ImpactSection = () => {
+  const [appType, setAppType] = useState("all");
+  const [downloadType, setDownloadType] = useState("all");
+  const [productCategory, setProductCategory] = useState("all");
+
+  // App types for dropdown
+  const appTypes = ["All Apps", "Social Media", "E-commerce", "Entertainment", "Utility"];
+  
+  // Product categories for dropdown
+  const productCategories = ["All Categories", "Shampoo", "Health Food Drinks", "Mobile Phones", "Electronics", "Clothing"];
+
   return (
     <div className="space-y-6 animate-fade-in">
       <h2 className="text-2xl font-bold">Impact Analysis</h2>
@@ -65,10 +79,27 @@ const ImpactSection = () => {
         <TabsContent value="app-usage" className="mt-0">
           <Card className="bg-white/10 backdrop-blur-md border border-white/20">
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <Smartphone className="mr-2 h-5 w-5 text-vtion-purple" />
-                App Usage - Pre vs Post Campaign
-              </CardTitle>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <CardTitle className="flex items-center">
+                  <Smartphone className="mr-2 h-5 w-5 text-vtion-purple" />
+                  App Usage - Pre vs Post Campaign
+                </CardTitle>
+                <div className="w-full sm:w-auto max-w-xs">
+                  <Label htmlFor="app-type" className="text-sm text-white/80 mb-1 block">Filter by App Type</Label>
+                  <Select value={appType} onValueChange={setAppType}>
+                    <SelectTrigger id="app-type" className="bg-white/10 border-white/30 text-white">
+                      <SelectValue placeholder="All Apps" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white/90 border-white/30">
+                      {appTypes.map((type, index) => (
+                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="h-80 w-full">
@@ -101,10 +132,27 @@ const ImpactSection = () => {
         <TabsContent value="app-downloads" className="mt-0">
           <Card className="bg-white/10 backdrop-blur-md border border-white/20">
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <Activity className="mr-2 h-5 w-5 text-vtion-purple" />
-                App Downloads - Pre vs Post Campaign
-              </CardTitle>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <CardTitle className="flex items-center">
+                  <Activity className="mr-2 h-5 w-5 text-vtion-purple" />
+                  App Downloads - Pre vs Post Campaign
+                </CardTitle>
+                <div className="w-full sm:w-auto max-w-xs">
+                  <Label htmlFor="download-type" className="text-sm text-white/80 mb-1 block">Filter by App Type</Label>
+                  <Select value={downloadType} onValueChange={setDownloadType}>
+                    <SelectTrigger id="download-type" className="bg-white/10 border-white/30 text-white">
+                      <SelectValue placeholder="All Apps" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white/90 border-white/30">
+                      {appTypes.map((type, index) => (
+                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="h-80 w-full">
@@ -137,10 +185,27 @@ const ImpactSection = () => {
         <TabsContent value="cart-additions" className="mt-0">
           <Card className="bg-white/10 backdrop-blur-md border border-white/20">
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <ShoppingCart className="mr-2 h-5 w-5 text-vtion-purple" />
-                Cart Additions - Pre vs Post Campaign
-              </CardTitle>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <CardTitle className="flex items-center">
+                  <ShoppingCart className="mr-2 h-5 w-5 text-vtion-purple" />
+                  Cart Additions - Pre vs Post Campaign
+                </CardTitle>
+                <div className="w-full sm:w-auto max-w-xs">
+                  <Label htmlFor="product-category" className="text-sm text-white/80 mb-1 block">Filter by Product Category</Label>
+                  <Select value={productCategory} onValueChange={setProductCategory}>
+                    <SelectTrigger id="product-category" className="bg-white/10 border-white/30 text-white">
+                      <SelectValue placeholder="All Categories" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white/90 border-white/30">
+                      {productCategories.map((category, index) => (
+                        <SelectItem key={index} value={category.toLowerCase().replace(' ', '-')}>
+                          {category}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="h-80 w-full">
@@ -198,7 +263,7 @@ const ImpactSection = () => {
                 <h4 className="font-medium mb-2">Analysis</h4>
                 <p className="text-white/80">
                   Display and Social channels show the highest contribution to conversions at 30% and 25% 
-                  respectively. Video advertising contributed 15% to overall conversions.
+                  respectively. Browser and Connected TV (CTV) channels contributed 10% and 12% respectively.
                 </p>
               </div>
             </CardContent>

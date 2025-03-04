@@ -25,12 +25,6 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        vtion: {
-          purple: "#9b87f5",
-          darkPurple: "#1A1F2C",
-          lightPurple: "#D6BCFA",
-          gray: "#8E9196",
-        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -59,6 +53,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Custom VTION colors
+        "vtion-purple": "hsl(var(--vtion-purple))",
+        "vtion-darkPurple": "hsl(var(--vtion-darkPurple))",
+        "vtion-lightPurple": "hsl(var(--vtion-lightPurple))",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {
@@ -69,19 +72,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        shimmer: {
-          '100%': { transform: 'translateX(100%)' },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        float: 'float 3s ease-in-out infinite',
-        shimmer: 'shimmer 2s infinite',
       },
     },
   },

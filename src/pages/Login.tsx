@@ -30,8 +30,8 @@ const Login = () => {
       <Card className="relative w-full max-w-md mx-4 p-8 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
         <div className="flex flex-col items-center space-y-6">
           <img 
-            src="/lovable-uploads/84273f88-53d9-4228-9118-22283fe7b9f1.png" 
-            alt="Vtion Logo" 
+            src="/lovable-uploads/9afa94b9-ec6c-4ba7-b341-99a193733f2f.png" 
+            alt="VTION Logo" 
             className="h-12 mb-6"
           />
           

@@ -28,13 +28,13 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       title: "Accurate Measurement",
       description: "Track performance with precise metrics and insightful analytics",
       icon: <PieChart className="h-12 w-12 text-vtion-purple" />,
-      link: "#"
+      link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
     },
     {
       title: "Audience Insights",
       description: "Understand your audience with detailed demographic and behavioral data",
       icon: <Users className="h-12 w-12 text-vtion-purple" />,
-      link: "#"
+      link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
     },
   ];
 
@@ -59,7 +59,7 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       </div>
 
       <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
-        <h2 className="text-2xl font-bold mb-4">Welcome to VTION Optima</h2>
+        <h2 className="text-2xl font-bold mb-4 text-white">Welcome to VTION Optima</h2>
         <p className="text-white/90 mb-6">
           VTION Optima is a comprehensive platform designed to enhance your media planning, 
           activation, and measurement capabilities. Navigate through the tabs above to explore 
