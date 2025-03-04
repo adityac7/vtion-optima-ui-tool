@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area } from 'recharts';
@@ -13,7 +14,6 @@ const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
   const mediaExposureData = [
     { platform: 'CTV', impressions: 3800, index: 105 },
     { platform: 'Digital', impressions: 4200, index: 122 },
-    { platform: 'OOH', impressions: 1500, index: 95 },
     { platform: 'Browser', impressions: 2300, index: 88 },
     { platform: 'Ecom', impressions: 1800, index: 75 },
   ];
@@ -46,7 +46,7 @@ const ExposureSection = ({ userType = 'advertiser' }: ExposureSectionProps) => {
     { daypart: 'Overnight (2-5am)', impressions: 900, reach: 600, frequency: 1.5 },
   ];
 
-  // Updated Exposure trends data - replaced TV with CTV, print with Ecom, and radio with Browser
+  // Updated Exposure trends data - only digital media platforms
   const trendData = [
     { week: 'Week 1', ctv: 2400, digital: 1800, ecom: 1200, browser: 900 },
     { week: 'Week 2', ctv: 2100, digital: 2100, ecom: 1100, browser: 800 },

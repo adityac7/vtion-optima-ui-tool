@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
@@ -10,12 +9,12 @@ export interface ImpactSectionProps {
 const ImpactSection = ({ userType = 'advertiser' }: ImpactSectionProps) => {
   // Data for charts
   const performanceData = [
-    { month: 'Jan', impressions: 2400, clicks: 400, conversions: 240 },
-    { month: 'Feb', impressions: 1398, clicks: 300, conversions: 210 },
-    { month: 'Mar', impressions: 9800, clicks: 700, conversions: 320 },
-    { month: 'Apr', impressions: 3908, clicks: 500, conversions: 280 },
-    { month: 'May', impressions: 4800, clicks: 600, conversions: 290 },
-    { month: 'Jun', impressions: 3800, clicks: 550, conversions: 270 },
+    { month: 'Jan', impressions: 2400, conversions: 240 },
+    { month: 'Feb', impressions: 1398, conversions: 210 },
+    { month: 'Mar', impressions: 9800, conversions: 320 },
+    { month: 'Apr', impressions: 3908, conversions: 280 },
+    { month: 'May', impressions: 4800, conversions: 290 },
+    { month: 'Jun', impressions: 3800, conversions: 270 },
   ];
 
   const channelData = [
@@ -54,7 +53,7 @@ const ImpactSection = ({ userType = 'advertiser' }: ImpactSectionProps) => {
           <CardHeader>
             <CardTitle className="text-xl text-white">Campaign Performance</CardTitle>
             <CardDescription className="text-white/90">
-              Track impressions, clicks, and conversions over time
+              Track impressions and conversions over time
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -66,7 +65,6 @@ const ImpactSection = ({ userType = 'advertiser' }: ImpactSectionProps) => {
                 <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
                 <Legend wrapperStyle={{ color: 'white' }} />
                 <Line type="monotone" dataKey="impressions" stroke="#8884d8" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="clicks" stroke="#82ca9d" />
                 <Line type="monotone" dataKey="conversions" stroke="#ffc658" />
               </LineChart>
             </ResponsiveContainer>
@@ -136,7 +134,6 @@ const ImpactSection = ({ userType = 'advertiser' }: ImpactSectionProps) => {
                   <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }} />
                   <Legend wrapperStyle={{ color: 'white' }} />
                   <Bar dataKey="impressions" name="Impressions" fill="#8884d8" />
-                  <Bar dataKey="clicks" name="Clicks" fill="#82ca9d" />
                 </BarChart>
               </ResponsiveContainer>
             </TabsContent>
