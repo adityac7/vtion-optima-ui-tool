@@ -60,7 +60,7 @@ const Dashboard = () => {
             </TabsContent>
             
             <TabsContent value="activate" className="mt-0">
-              <ActivateSection userType={userType} />
+              <ActivateSection />
             </TabsContent>
             
             <TabsContent value="impact" className="mt-0">
@@ -68,7 +68,7 @@ const Dashboard = () => {
             </TabsContent>
             
             <TabsContent value="exposure" className="mt-0">
-              <ExposureSection userType={userType} />
+              <ExposureSection />
             </TabsContent>
           </div>
         </Tabs>

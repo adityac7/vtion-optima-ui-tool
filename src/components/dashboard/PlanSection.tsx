@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { 
   Smartphone, TrendingUp, BarChart3, ShoppingCart,
@@ -19,7 +18,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend } from 'recharts';
 
-interface PlanSectionProps {
+export interface PlanSectionProps {
   userType: string;
 }
 
