@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Bar, Line, BarChart as RechartBarChart, LineChart as RechartLineChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,7 +6,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 
-// Dummy data for charts
 const appUsageData = [
   { name: 'Week 1', 'Pre-Campaign': 1000, 'Post-Campaign': 1300 },
   { name: 'Week 2', 'Pre-Campaign': 1200, 'Post-Campaign': 1600 },
@@ -43,10 +41,8 @@ const ImpactSection = () => {
   const [downloadType, setDownloadType] = useState("all");
   const [productCategory, setProductCategory] = useState("all");
 
-  // App types for dropdown
   const appTypes = ["All Apps", "Social Media", "E-commerce", "Entertainment", "Utility"];
   
-  // Product categories for dropdown
   const productCategories = ["All Categories", "Shampoo", "Health Food Drinks", "Mobile Phones", "Electronics", "Clothing"];
 
   return (
@@ -57,20 +53,20 @@ const ImpactSection = () => {
       </p>
 
       <Tabs defaultValue="app-usage" className="w-full">
-        <TabsList className="bg-white/10 backdrop-blur-md border border-white/20 p-1 mb-6">
-          <TabsTrigger value="app-usage" className="data-[state=active]:bg-vtion-purple text-white">
+        <TabsList className="bg-black/20 backdrop-blur-md border border-white/20 p-1 mb-6">
+          <TabsTrigger value="app-usage" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <Smartphone className="mr-2 h-4 w-4" />
             App Usage
           </TabsTrigger>
-          <TabsTrigger value="app-downloads" className="data-[state=active]:bg-vtion-purple text-white">
+          <TabsTrigger value="app-downloads" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <Activity className="mr-2 h-4 w-4" />
             App Downloads
           </TabsTrigger>
-          <TabsTrigger value="cart-additions" className="data-[state=active]:bg-vtion-purple text-white">
+          <TabsTrigger value="cart-additions" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <ShoppingCart className="mr-2 h-4 w-4" />
             Cart Additions
           </TabsTrigger>
-          <TabsTrigger value="mta-analytics" className="data-[state=active]:bg-vtion-purple text-white">
+          <TabsTrigger value="mta-analytics" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <BarChart className="mr-2 h-4 w-4" />
             MTA Analytics
           </TabsTrigger>
@@ -87,12 +83,12 @@ const ImpactSection = () => {
                 <div className="w-full sm:w-auto max-w-xs">
                   <Label htmlFor="app-type" className="text-sm text-white/80 mb-1 block">Filter by App Type</Label>
                   <Select value={appType} onValueChange={setAppType}>
-                    <SelectTrigger id="app-type" className="bg-white/10 border-white/30 text-white">
+                    <SelectTrigger id="app-type" className="bg-black/30 border-white/30 text-white">
                       <SelectValue placeholder="All Apps" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white/90 border-white/30">
+                    <SelectContent className="bg-slate-800 border-gray-700 text-white">
                       {appTypes.map((type, index) => (
-                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')}>
+                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')} className="text-white focus:bg-vtion-purple focus:text-white">
                           {type}
                         </SelectItem>
                       ))}
@@ -140,12 +136,12 @@ const ImpactSection = () => {
                 <div className="w-full sm:w-auto max-w-xs">
                   <Label htmlFor="download-type" className="text-sm text-white/80 mb-1 block">Filter by App Type</Label>
                   <Select value={downloadType} onValueChange={setDownloadType}>
-                    <SelectTrigger id="download-type" className="bg-white/10 border-white/30 text-white">
+                    <SelectTrigger id="download-type" className="bg-black/30 border-white/30 text-white">
                       <SelectValue placeholder="All Apps" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white/90 border-white/30">
+                    <SelectContent className="bg-slate-800 border-gray-700 text-white">
                       {appTypes.map((type, index) => (
-                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')}>
+                        <SelectItem key={index} value={type.toLowerCase().replace(' ', '-')} className="text-white focus:bg-vtion-purple focus:text-white">
                           {type}
                         </SelectItem>
                       ))}
@@ -193,12 +189,12 @@ const ImpactSection = () => {
                 <div className="w-full sm:w-auto max-w-xs">
                   <Label htmlFor="product-category" className="text-sm text-white/80 mb-1 block">Filter by Product Category</Label>
                   <Select value={productCategory} onValueChange={setProductCategory}>
-                    <SelectTrigger id="product-category" className="bg-white/10 border-white/30 text-white">
+                    <SelectTrigger id="product-category" className="bg-black/30 border-white/30 text-white">
                       <SelectValue placeholder="All Categories" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white/90 border-white/30">
+                    <SelectContent className="bg-slate-800 border-gray-700 text-white">
                       {productCategories.map((category, index) => (
-                        <SelectItem key={index} value={category.toLowerCase().replace(' ', '-')}>
+                        <SelectItem key={index} value={category.toLowerCase().replace(' ', '-')} className="text-white focus:bg-vtion-purple focus:text-white">
                           {category}
                         </SelectItem>
                       ))}

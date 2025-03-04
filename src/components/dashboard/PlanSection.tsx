@@ -257,7 +257,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
                     </Card>
                   </DialogTrigger>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent className="bg-slate-800 text-white border-gray-700">
                   <p>{card.tooltipText}</p>
                 </TooltipContent>
               </Tooltip>
@@ -276,11 +276,11 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
               <div className="mt-4">
                 <p className="text-white/90 mb-6">{card.modalContent}</p>
                 
-                <div className="bg-white/5 rounded-lg border border-white/10 p-4 mb-6">
+                <div className="bg-black/30 rounded-lg border border-white/10 p-4 mb-6">
                   {renderChart(card.chartType)}
                 </div>
                 
-                <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                <div className="p-4 bg-black/30 rounded-lg border border-white/10">
                   <h4 className="font-medium mb-2">Key Benefits</h4>
                   <ul className="list-disc pl-5 space-y-1 text-white/90">
                     <li>Data-driven decision making</li>

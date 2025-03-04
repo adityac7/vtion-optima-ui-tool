@@ -144,6 +144,40 @@
   @apply border-slate-300;
 }
 
+/* Light mode select and filter styles */
+.light .bg-black\/20,
+.light .bg-black\/30 {
+  @apply bg-slate-200;
+}
+
+.light .bg-slate-800 {
+  @apply bg-white;
+}
+
+.light .border-gray-700 {
+  @apply border-slate-300;
+}
+
+.light .text-gray-200 {
+  @apply text-slate-700;
+}
+
+.light .data-\[state\=active\]\:bg-vtion-purple {
+  @apply data-[state=active]:bg-vtion-purple;
+}
+
+.light .data-\[state\=active\]\:text-white {
+  @apply data-[state=active]:text-white;
+}
+
+.light .focus\:bg-vtion-purple {
+  @apply focus:bg-vtion-purple;
+}
+
+.light .focus\:text-white {
+  @apply focus:text-white;
+}
+
 /* Animation utilities */
 @keyframes fade-in {
   from { opacity: 0; }

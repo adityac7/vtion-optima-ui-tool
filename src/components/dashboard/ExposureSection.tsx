@@ -46,20 +46,20 @@ const ExposureSection = () => {
       </p>
 
       <Tabs defaultValue="bls" className="w-full">
-        <TabsList className="bg-white/10 backdrop-blur-md border border-white/20 p-1 mb-6">
-          <TabsTrigger value="bls" className="data-[state=active]:bg-vtion-purple text-white">
+        <TabsList className="bg-black/20 backdrop-blur-md border border-white/20 p-1 mb-6">
+          <TabsTrigger value="bls" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <Activity className="mr-2 h-4 w-4" />
             BLS
           </TabsTrigger>
-          <TabsTrigger value="reach" className="data-[state=active]:bg-vtion-purple text-white">
+          <TabsTrigger value="reach" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <TrendingUp className="mr-2 h-4 w-4" />
             Reach
           </TabsTrigger>
-          <TabsTrigger value="otr" className="data-[state=active]:bg-vtion-purple text-white">
+          <TabsTrigger value="otr" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <PieChart className="mr-2 h-4 w-4" />
             On-Target Reach
           </TabsTrigger>
-          <TabsTrigger value="frequency" className="data-[state=active]:bg-vtion-purple text-white">
+          <TabsTrigger value="frequency" className="data-[state=active]:bg-vtion-purple data-[state=active]:text-white text-gray-200">
             <BarChart className="mr-2 h-4 w-4" />
             Frequency
           </TabsTrigger>
