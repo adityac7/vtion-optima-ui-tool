@@ -162,20 +162,21 @@
   @apply text-slate-700;
 }
 
+/* Fix for circular dependency - don't use @apply here */
 .light .data-\[state\=active\]\:bg-vtion-purple {
-  @apply data-[state=active]:bg-vtion-purple;
+  background-color: hsl(var(--vtion-purple));
 }
 
 .light .data-\[state\=active\]\:text-white {
-  @apply data-[state=active]:text-white;
+  color: white;
 }
 
 .light .focus\:bg-vtion-purple {
-  @apply focus:bg-vtion-purple;
+  background-color: hsl(var(--vtion-purple));
 }
 
 .light .focus\:text-white {
-  @apply focus:text-white;
+  color: white;
 }
 
 /* Animation utilities */

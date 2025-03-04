@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -22,8 +21,7 @@ const Dashboard = () => {
   }, [searchParams]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
-      {/* Theme Toggler in the top-right corner */}
+    <div className="flex flex-col h-screen">
       <div className="absolute top-4 right-4 z-50">
         <ThemeToggle />
       </div>
@@ -41,37 +39,39 @@ const Dashboard = () => {
           </p>
         </header>
 
-        <Tabs defaultValue="home" value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="bg-white/10 backdrop-blur-md border border-white/20 w-full h-auto flex flex-wrap mb-8">
-            <TabsTrigger value="home" className="data-[state=active]:bg-vtion-purple text-foreground">Home</TabsTrigger>
-            <TabsTrigger value="plan" className="data-[state=active]:bg-vtion-purple text-foreground">Plan</TabsTrigger>
-            <TabsTrigger value="activate" className="data-[state=active]:bg-vtion-purple text-foreground">Activate</TabsTrigger>
-            <TabsTrigger value="impact" className="data-[state=active]:bg-vtion-purple text-foreground">Impact</TabsTrigger>
-            <TabsTrigger value="exposure" className="data-[state=active]:bg-vtion-purple text-foreground">Exposure</TabsTrigger>
-          </TabsList>
+        <div className="flex-1 overflow-auto">
+          <Tabs defaultValue="home" className="w-full">
+            <TabsList className="bg-white/10 backdrop-blur-md border border-white/20 w-full h-auto flex flex-wrap mb-8">
+              <TabsTrigger value="home" className="data-[state=active]:bg-vtion-purple text-foreground">Home</TabsTrigger>
+              <TabsTrigger value="plan" className="data-[state=active]:bg-vtion-purple text-foreground">Plan</TabsTrigger>
+              <TabsTrigger value="activate" className="data-[state=active]:bg-vtion-purple text-foreground">Activate</TabsTrigger>
+              <TabsTrigger value="impact" className="data-[state=active]:bg-vtion-purple text-foreground">Impact</TabsTrigger>
+              <TabsTrigger value="exposure" className="data-[state=active]:bg-vtion-purple text-foreground">Exposure</TabsTrigger>
+            </TabsList>
 
-          <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg min-h-[60vh]">
-            <TabsContent value="home" className="mt-0">
-              <HomeSection userType={userType} />
-            </TabsContent>
-            
-            <TabsContent value="plan" className="mt-0">
-              <PlanSection userType={userType} />
-            </TabsContent>
-            
-            <TabsContent value="activate" className="mt-0">
-              <ActivateSection />
-            </TabsContent>
-            
-            <TabsContent value="impact" className="mt-0">
-              <ImpactSection />
-            </TabsContent>
-            
-            <TabsContent value="exposure" className="mt-0">
-              <ExposureSection />
-            </TabsContent>
-          </div>
-        </Tabs>
+            <div className="mt-6 p-4">
+              <TabsContent value="home" className="mt-0">
+                <HomeSection userType={userType} />
+              </TabsContent>
+              
+              <TabsContent value="plan" className="mt-0">
+                <PlanSection userType={userType} />
+              </TabsContent>
+              
+              <TabsContent value="activate" className="mt-0">
+                <ActivateSection userType={userType} />
+              </TabsContent>
+              
+              <TabsContent value="impact" className="mt-0">
+                <ImpactSection userType={userType} />
+              </TabsContent>
+              
+              <TabsContent value="exposure" className="mt-0">
+                <ExposureSection userType={userType} />
+              </TabsContent>
+            </div>
+          </Tabs>
+        </div>
       </div>
     </div>
   );
