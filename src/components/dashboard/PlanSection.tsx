@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { 
   Smartphone, TrendingUp, BarChart3, ShoppingCart,
@@ -65,7 +66,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Deep insights into how users interact with digital platforms",
           modalContent: "Digital Behavior analysis provides comprehensive insights into how users interact with websites, apps, and other digital touchpoints. Track engagement patterns, session duration, and user flows.",
           chartType: "bar",
-          link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         },
         {
           id: "intent-signals",
@@ -75,7 +76,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Capture signals that indicate user purchase readiness",
           modalContent: "Intent Signals help identify users who are actively researching products or services similar to yours. Understand where your potential customers are in their buying journey and target them at the right moment.",
           chartType: "pie",
-          link: "#"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         },
         {
           id: "advertising-sov",
@@ -85,7 +86,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Compare your advertising presence against competitors",
           modalContent: "Advertising Share of Voice (SOV) measures how your brand's presence compares to competitors across various advertising channels. Identify opportunities to increase visibility in underserved channels.",
           chartType: "line",
-          link: "#"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         },
         {
           id: "ecommerce-journeys",
@@ -95,7 +96,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Track customer paths from discovery to purchase",
           modalContent: "E-commerce Journeys mapping helps you understand the complete customer path from product discovery to purchase. Identify friction points, abandonment reasons, and opportunities to optimize conversion rates.",
           chartType: "bar",
-          link: "#"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         }
       ]);
     } else if (userType === "agency") {
@@ -108,7 +109,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "In-depth view of how audiences interact across digital touchpoints",
           modalContent: "Digital Behavior analysis for agencies provides multi-dimensional views of how different audience segments interact across digital platforms. Use these insights for more targeted media planning across client campaigns.",
           chartType: "bar",
-          link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         },
         {
           id: "digital-intender",
@@ -118,7 +119,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Focus on high-propensity users across your client base",
           modalContent: "Digital Intender Behavior analysis identifies users who show strong purchase intent signals. This helps agencies develop more effective targeting strategies for clients in various industries.",
           chartType: "pie",
-          link: "#"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         },
         {
           id: "incremental-reach",
@@ -128,7 +129,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Plan media that reaches new, unduplicated audiences",
           modalContent: "The Incremental Reach Planner helps agencies optimize media plans to reach new, unduplicated audiences. Maximize the effectiveness of your clients' media budgets by reducing waste on audience overlap.",
           chartType: "line",
-          link: "#"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         },
         {
           id: "ott-planner",
@@ -138,7 +139,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Target audiences on streaming and OTT platforms",
           modalContent: "The OTT & Content Planner helps agencies develop effective strategies for reaching audiences on streaming platforms. Get insights on content preferences, viewing patterns, and optimal ad placements.",
           chartType: "bar",
-          link: "#"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         }
       ]);
     } else {
@@ -152,7 +153,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Understand how users interact with digital platforms",
           modalContent: "Digital Behavior analysis provides insights into how users interact with digital platforms. This data can help inform your planning strategies.",
           chartType: "bar",
-          link: "https://app.powerbi.com/links/7YPnWp--5w?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         },
         {
           id: "audience-insights",
@@ -162,7 +163,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
           tooltipText: "Detailed data about your audience segments",
           modalContent: "Audience Insights provides detailed information about your audience segments, including demographics, interests, and behaviors.",
           chartType: "pie",
-          link: "#"
+          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare"
         }
       ]);
     }
