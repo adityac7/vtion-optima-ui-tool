@@ -137,14 +137,6 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
           modules and features tailored to your needs as a{" "}
           <span className="font-medium text-vtion-purple">{userType}</span>.
         </p>
-        <div className="mt-6 text-center space-y-1">
-          <p className="text-white/90 font-medium">Unlocking Insights</p>
-          <p className="text-white/90 font-medium">Driving Activation</p>
-          <p className="text-white/90 font-medium">Measuring Success</p>
-        </div>
-        <div className="mt-6 text-white/60 text-xs text-center">
-          Modules & Product cats' data to be populated basis subscription by Agency / Advertiser.
-        </div>
       </div>
     </div>
   );

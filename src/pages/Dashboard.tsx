@@ -4,7 +4,6 @@ import { useSearchParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HomeSection from "@/components/dashboard/HomeSection";
 import PlanSection from "@/components/dashboard/PlanSection";
-import ActivateSection from "@/components/dashboard/ActivateSection";
 import ImpactSection from "@/components/dashboard/ImpactSection";
 import ExposureSection from "@/components/dashboard/ExposureSection";
 import MeasureForm from "@/components/dashboard/MeasureForm";
@@ -22,6 +21,23 @@ const Dashboard = () => {
       setUserType(type);
     }
   }, [searchParams]);
+
+  const handleTabChange = (value: string) => {
+    if (value === "activate") {
+      window.open("https://proddashboard.vtion.in/adhoc_requests/", "_blank");
+      return;
+    }
+    
+    if (value === "exposure") {
+      setShowMeasureForm(true);
+      return setActiveTab("impact");
+    }
+    
+    setActiveTab(value);
+    if (value === "impact") {
+      setShowMeasureForm(false);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
@@ -46,12 +62,7 @@ const Dashboard = () => {
         </header>
 
         <div className="flex-1 overflow-auto">
-          <Tabs defaultValue="home" className="w-full" onValueChange={(value) => {
-            setActiveTab(value);
-            if (value === "impact") {
-              setShowMeasureForm(false);
-            }
-          }}>
+          <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
             <TabsList className="bg-white/10 backdrop-blur-md border border-white/20 w-full h-auto flex flex-wrap mb-8">
               <TabsTrigger value="home" className="data-[state=active]:bg-vtion-purple text-white">Home</TabsTrigger>
               <TabsTrigger value="plan" className="data-[state=active]:bg-vtion-purple text-white">Plan</TabsTrigger>
@@ -70,7 +81,7 @@ const Dashboard = () => {
               </TabsContent>
               
               <TabsContent value="activate" className="mt-0">
-                <ActivateSection userType={userType} />
+                {/* This content won't be shown since we're redirecting */}
               </TabsContent>
               
               <TabsContent value="impact" className="mt-0">
@@ -114,7 +125,7 @@ const Dashboard = () => {
               </TabsContent>
               
               <TabsContent value="exposure" className="mt-0">
-                <ExposureSection />
+                {/* This content won't be shown since we're redirecting to measure form */}
               </TabsContent>
             </div>
           </Tabs>
