@@ -4,10 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { Mail } from "lucide-react";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogDescription,
+  DialogFooter,
+  DialogClose
+} from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [forgotPasswordOpen, setForgotPasswordOpen] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
+  const { toast } = useToast();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,6 +32,23 @@ const Login = () => {
       setLoading(false);
       navigate("/user-selection");
     }, 1000);
+  };
+
+  const handlePasswordReset = (e: React.FormEvent) => {
+    e.preventDefault();
+    setResetLoading(true);
+    
+    // Simulate sending password reset email
+    setTimeout(() => {
+      setResetLoading(false);
+      setForgotPasswordOpen(false);
+      toast({
+        title: "Reset link sent",
+        description: `Password reset instructions were sent to ${resetEmail}`,
+        duration: 5000,
+      });
+      setResetEmail("");
+    }, 1500);
   };
 
   return (
@@ -55,6 +87,15 @@ const Login = () => {
                 required
               />
             </div>
+            <div className="flex justify-end">
+              <button 
+                type="button"
+                onClick={() => setForgotPasswordOpen(true)}
+                className="text-white/80 text-sm hover:text-white hover:underline transition-colors"
+              >
+                Forgot Password?
+              </button>
+            </div>
             <Button 
               type="submit" 
               className="w-full bg-vtion-purple hover:bg-vtion-purple/90 text-white font-medium py-2 rounded-lg transition-all duration-200 ease-in-out"
@@ -69,6 +110,56 @@ const Login = () => {
       <footer className="mt-8 text-white/60 text-sm max-w-md text-center px-4">
         Modules & Product cats' data to be populated basis subscription by Agency / Advertiser.
       </footer>
+
+      {/* Forgot Password Dialog */}
+      <Dialog open={forgotPasswordOpen} onOpenChange={setForgotPasswordOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Reset your password</DialogTitle>
+            <DialogDescription>
+              Enter your email address below to receive a password reset link.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handlePasswordReset}>
+            <div className="flex items-center space-x-2 py-4">
+              <div className="grid flex-1 gap-2">
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  className="w-full"
+                  required
+                />
+              </div>
+            </div>
+            <DialogFooter className="sm:justify-between flex flex-col-reverse sm:flex-row gap-2">
+              <DialogClose asChild>
+                <Button type="button" variant="outline">
+                  Cancel
+                </Button>
+              </DialogClose>
+              <Button 
+                type="submit" 
+                className="bg-vtion-purple hover:bg-vtion-purple/90"
+                disabled={resetLoading}
+              >
+                {resetLoading ? (
+                  <span className="flex items-center gap-2">
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"></span>
+                    Sending...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <Mail className="h-4 w-4" />
+                    Send Reset Link
+                  </span>
+                )}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
