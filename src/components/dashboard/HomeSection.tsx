@@ -68,6 +68,75 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
     }
   ];
 
+  const plannerFeatures = [
+    {
+      title: "Digital Reach Planner",
+      description: "Plan optimal reach across digital platforms and touchpoints",
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+    },
+    {
+      title: "Audience Classification",
+      description: "Analyze High, Medium, and Low value audience segments for targeting",
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+    },
+    {
+      title: "Incremental Reach Analysis",
+      description: "Identify platforms that provide maximum incremental reach for your budget",
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+    },
+    {
+      title: "Campaign Budget Allocator",
+      description: "Optimize budget allocation across platforms to maximize campaign impact",
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+    }
+  ];
+
+  const activateFeatures = [
+    {
+      title: "Custom Audience Creation",
+      description: "Build high-value audience segments based on behavioral and purchase patterns",
+      link: "https://proddashboard.vtion.in/adhoc_requests/"
+    },
+    {
+      title: "Multi-Platform Activation",
+      description: "Activate audiences seamlessly across Meta, Google, DV360, and other DSPs",
+      link: "https://proddashboard.vtion.in/adhoc_requests/"
+    },
+    {
+      title: "Audience Enrichment",
+      description: "Enhance first-party data with VTION's rich behavioral insights",
+      link: "https://proddashboard.vtion.in/adhoc_requests/"
+    },
+    {
+      title: "Real-time Campaign Monitoring",
+      description: "Track audience activation and engagement in real-time across platforms",
+      link: "https://proddashboard.vtion.in/adhoc_requests/"
+    }
+  ];
+
+  const measureFeatures = [
+    {
+      title: "Brand Lift Surveys",
+      description: "Measure impact on brand awareness, consideration, and preference",
+      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+    },
+    {
+      title: "Multi-Touch Attribution",
+      description: "Analyze touchpoint contribution across the customer journey",
+      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+    },
+    {
+      title: "Conversion Impact Analysis",
+      description: "Measure how media exposure drives conversions and sales",
+      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+    },
+    {
+      title: "Campaign ROI Dashboard",
+      description: "Comprehensive view of campaign performance and return on investment",
+      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+    }
+  ];
+
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -103,6 +172,7 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
         ))}
       </div>
 
+      {/* OPTIMA Insights Features */}
       <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
         <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Insights Features</h2>
         <p className="text-white/90 mb-6">
@@ -123,6 +193,88 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
                 <h3 className="font-medium text-white mb-2">{feature.title}</h3>
                 <p className="text-white/70 text-sm">{feature.description}</p>
                 <div className="mt-3 text-sm text-vtion-purple">View Analysis →</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* OPTIMA Planner Features */}
+      <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
+        <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Planner Features</h2>
+        <p className="text-white/90 mb-6">
+          OPTIMA Planner helps optimize your media planning with data-driven insights for 
+          maximizing reach and impact across digital touchpoints for 
+          <span className="font-semibold text-vtion-purple"> {userType}s</span>.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          {plannerFeatures.map((feature, index) => (
+            <a 
+              key={index}
+              href={feature.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:no-underline"
+            >
+              <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
+                <h3 className="font-medium text-white mb-2">{feature.title}</h3>
+                <p className="text-white/70 text-sm">{feature.description}</p>
+                <div className="mt-3 text-sm text-vtion-purple">View Planner →</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* OPTIMA Activate Features */}
+      <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
+        <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Activate Features</h2>
+        <p className="text-white/90 mb-6">
+          OPTIMA Activate enables seamless audience activation across multiple platforms and channels,
+          empowering <span className="font-semibold text-vtion-purple">{userType}s</span> to reach high-value audiences.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          {activateFeatures.map((feature, index) => (
+            <a 
+              key={index}
+              href={feature.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:no-underline"
+            >
+              <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
+                <h3 className="font-medium text-white mb-2">{feature.title}</h3>
+                <p className="text-white/70 text-sm">{feature.description}</p>
+                <div className="mt-3 text-sm text-vtion-purple">Activate Now →</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* OPTIMA Measure Features */}
+      <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
+        <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Measure Features</h2>
+        <p className="text-white/90 mb-6">
+          OPTIMA Measure provides comprehensive analytics to evaluate campaign performance and ROI,
+          giving <span className="font-semibold text-vtion-purple">{userType}s</span> actionable insights.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          {measureFeatures.map((feature, index) => (
+            <a 
+              key={index}
+              href={feature.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:no-underline"
+            >
+              <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
+                <h3 className="font-medium text-white mb-2">{feature.title}</h3>
+                <p className="text-white/70 text-sm">{feature.description}</p>
+                <div className="mt-3 text-sm text-vtion-purple">View Metrics →</div>
               </div>
             </a>
           ))}

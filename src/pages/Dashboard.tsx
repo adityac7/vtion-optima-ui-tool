@@ -43,7 +43,7 @@ const Dashboard = () => {
         <header className="text-center mb-8">
           <div className="flex flex-col items-center justify-center mb-6">
             <img 
-              src="/lovable-uploads/bc89a4f0-9aa4-4729-b125-9258b8ae1d13.png" 
+              src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
               alt="VTION Logo" 
               className="h-16 mb-2"
             />
