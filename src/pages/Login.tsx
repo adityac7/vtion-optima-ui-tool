@@ -20,7 +20,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-vtion-navy flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-vtion-navy flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-r from-vtion-purple/20 to-vtion-lightPurple/20" />
       
@@ -29,11 +29,14 @@ const Login = () => {
 
       <Card className="relative w-full max-w-md mx-4 p-8 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
         <div className="flex flex-col items-center space-y-6">
-          <img 
-            src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
-            alt="VTION Logo" 
-            className="h-16 mb-6"
-          />
+          <div className="flex flex-col items-center">
+            <img 
+              src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
+              alt="VTION Logo" 
+              className="h-16 mb-2"
+            />
+            <span className="text-xl font-bold text-white">Connect</span>
+          </div>
           
           <form onSubmit={handleLogin} className="w-full space-y-4">
             <div className="space-y-2">
@@ -62,6 +65,10 @@ const Login = () => {
           </form>
         </div>
       </Card>
+
+      <footer className="mt-8 text-white/60 text-sm max-w-md text-center px-4">
+        Modules & Product cats' data to be populated basis subscription by Agency / Advertiser.
+      </footer>
     </div>
   );
 };
