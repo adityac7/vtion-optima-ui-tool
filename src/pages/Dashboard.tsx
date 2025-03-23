@@ -5,7 +5,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HomeSection from "@/components/dashboard/HomeSection";
 import PlanSection from "@/components/dashboard/PlanSection";
 import ImpactSection from "@/components/dashboard/ImpactSection";
-import ExposureSection from "@/components/dashboard/ExposureSection";
 import MeasureForm from "@/components/dashboard/MeasureForm";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
@@ -26,11 +25,6 @@ const Dashboard = () => {
     if (value === "activate") {
       window.open("https://proddashboard.vtion.in/adhoc_requests/", "_blank");
       return;
-    }
-    
-    if (value === "exposure") {
-      setShowMeasureForm(true);
-      return setActiveTab("impact");
     }
     
     setActiveTab(value);
@@ -68,7 +62,6 @@ const Dashboard = () => {
               <TabsTrigger value="plan" className="data-[state=active]:bg-vtion-purple text-white">Plan</TabsTrigger>
               <TabsTrigger value="activate" className="data-[state=active]:bg-vtion-purple text-white">Activate</TabsTrigger>
               <TabsTrigger value="impact" className="data-[state=active]:bg-vtion-purple text-white">Measure</TabsTrigger>
-              <TabsTrigger value="exposure" className="data-[state=active]:bg-vtion-purple text-white">Exposure</TabsTrigger>
             </TabsList>
 
             <div className="mt-6 p-4">
@@ -122,10 +115,6 @@ const Dashboard = () => {
                     <ImpactSection />
                   </div>
                 )}
-              </TabsContent>
-              
-              <TabsContent value="exposure" className="mt-0">
-                {/* This content won't be shown since we're redirecting to measure form */}
               </TabsContent>
             </div>
           </Tabs>

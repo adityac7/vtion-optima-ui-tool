@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
-  Home, BarChart, Play, TrendingUp, Eye, 
+  Home, BarChart, Play, TrendingUp, 
   Building2, Target, Newspaper, Search 
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -14,7 +14,6 @@ import { useToast } from "@/hooks/use-toast";
 import PlanSection from "@/components/dashboard/PlanSection";
 import ActivateSection from "@/components/dashboard/ActivateSection";
 import ImpactSection from "@/components/dashboard/ImpactSection";
-import ExposureSection from "@/components/dashboard/ExposureSection";
 import HomeSection from "@/components/dashboard/HomeSection";
 
 const Index = () => {
@@ -119,9 +118,6 @@ const Index = () => {
             <TabsTrigger value="impact" className="data-[state=active]:bg-vtion-purple text-white">
               <TrendingUp className="mr-2 h-4 w-4" /> Impact
             </TabsTrigger>
-            <TabsTrigger value="exposure" className="data-[state=active]:bg-vtion-purple text-white">
-              <Eye className="mr-2 h-4 w-4" /> Exposure
-            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="home" className="mt-0">
@@ -138,10 +134,6 @@ const Index = () => {
           
           <TabsContent value="impact" className="mt-0">
             <ImpactSection />
-          </TabsContent>
-          
-          <TabsContent value="exposure" className="mt-0">
-            <ExposureSection />
           </TabsContent>
         </Tabs>
       </main>

@@ -1,7 +1,7 @@
 
 import { 
   BarChart, Play, TrendingUp, Eye, 
-  ShoppingCart, LineChart, Target, Users 
+  LineChart, Target, Users, TrendingDown
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -15,7 +15,7 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       title: "OPTIMA Insights",
       subtitle: "Understand consumer behaviour",
       description: "Track competition SOV, and analyse e-commerce journeys",
-      icon: <ShoppingCart className="h-12 w-12 text-vtion-purple" />,
+      icon: <BarChart className="h-12 w-12 text-vtion-purple" />,
       link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=e3d839cf-5629-4a86-80b7-4406f9c35a7b",
       color: "from-blue-500/20 to-cyan-400/20"
     },
@@ -39,7 +39,7 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       title: "OPTIMA Measure",
       subtitle: "Track Exposure & Impact",
       description: "Measure campaign effectiveness through BLS, MTA and surveys",
-      icon: <Eye className="h-12 w-12 text-vtion-purple" />,
+      icon: <TrendingUp className="h-12 w-12 text-vtion-purple" />,
       link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi",
       color: "from-green-500/20 to-teal-400/20"
     },
