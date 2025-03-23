@@ -67,14 +67,7 @@ const Login = () => {
       </Card>
 
       <footer className="mt-8 text-white/60 text-sm max-w-md text-center px-4">
-        <div className="mb-2">
-          Modules & Product cats' data to be populated basis subscription by Agency / Advertiser.
-        </div>
-        <div className="text-right">
-          <div className="text-white/80 text-sm font-medium">Unlocking Insights</div>
-          <div className="text-white/80 text-sm font-medium">Driving Activation</div>
-          <div className="text-white/80 text-sm font-medium">Measuring Success</div>
-        </div>
+        Modules & Product cats' data to be populated basis subscription by Agency / Advertiser.
       </footer>
     </div>
   );
