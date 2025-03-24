@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HomeSection from "@/components/dashboard/HomeSection";
 import PlanSection from "@/components/dashboard/PlanSection";
 import ImpactSection from "@/components/dashboard/ImpactSection";
@@ -11,7 +10,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 const Dashboard = () => {
   const [searchParams] = useSearchParams();
   const [userType, setUserType] = useState<string>("advertiser");
-  const [activeTab, setActiveTab] = useState<string>("home");
+  const [activeSection, setActiveSection] = useState<string>("home");
   const [showMeasureForm, setShowMeasureForm] = useState(false);
 
   useEffect(() => {
@@ -20,18 +19,6 @@ const Dashboard = () => {
       setUserType(type);
     }
   }, [searchParams]);
-
-  const handleTabChange = (value: string) => {
-    if (value === "activate") {
-      window.open("https://proddashboard.vtion.in/adhoc_requests/", "_blank");
-      return;
-    }
-    
-    setActiveTab(value);
-    if (value === "impact") {
-      setShowMeasureForm(false);
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
@@ -56,68 +43,9 @@ const Dashboard = () => {
         </header>
 
         <div className="flex-1 overflow-auto">
-          <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
-            <TabsList className="bg-white/10 backdrop-blur-md border border-white/20 w-full h-auto flex flex-wrap mb-8">
-              <TabsTrigger value="home" className="data-[state=active]:bg-vtion-purple text-white">Home</TabsTrigger>
-              <TabsTrigger value="plan" className="data-[state=active]:bg-vtion-purple text-white">Plan</TabsTrigger>
-              <TabsTrigger value="activate" className="data-[state=active]:bg-vtion-purple text-white">Activate</TabsTrigger>
-              <TabsTrigger value="impact" className="data-[state=active]:bg-vtion-purple text-white">Measure</TabsTrigger>
-            </TabsList>
-
-            <div className="mt-6 p-4">
-              <TabsContent value="home" className="mt-0">
-                <HomeSection userType={userType} />
-              </TabsContent>
-              
-              <TabsContent value="plan" className="mt-0">
-                <PlanSection userType={userType} />
-              </TabsContent>
-              
-              <TabsContent value="activate" className="mt-0">
-                {/* This content won't be shown since we're redirecting */}
-              </TabsContent>
-              
-              <TabsContent value="impact" className="mt-0">
-                {showMeasureForm ? (
-                  <MeasureForm />
-                ) : (
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {[
-                        {
-                          title: "Brand Lift Survey",
-                          description: "Measure the impact of your campaign on brand perception",
-                          icon: "📈"
-                        },
-                        {
-                          title: "Multi-Touch Attribution",
-                          description: "Analyze touchpoint contribution to conversions",
-                          icon: "👆"
-                        },
-                        {
-                          title: "Custom Surveys",
-                          description: "Create custom research to understand consumer behavior",
-                          icon: "📊"
-                        }
-                      ].map((option, index) => (
-                        <div 
-                          key={index}
-                          onClick={() => setShowMeasureForm(true)}
-                          className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-lg cursor-pointer hover:bg-white/20 transition duration-300"
-                        >
-                          <div className="text-4xl mb-4">{option.icon}</div>
-                          <h3 className="text-xl font-bold text-white mb-2">{option.title}</h3>
-                          <p className="text-white/70">{option.description}</p>
-                          <div className="mt-4 text-vtion-purple">Request Now →</div>
-                        </div>
-                      ))}
-                    </div>
-                    <ImpactSection />
-                  </div>
-                )}
-              </TabsContent>
-            </div>
-          </Tabs>
+          <div className="mt-6 p-4">
+            <HomeSection userType={userType} />
+          </div>
         </div>
       </div>
 
