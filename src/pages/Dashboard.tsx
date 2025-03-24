@@ -76,6 +76,9 @@ const Dashboard = () => {
               <div className="text-white/80 text-sm font-medium">Measuring Success</div>
             </div>
           </div>
+          <div className="text-center text-white/60 text-xs mt-4 pt-2 border-t border-white/10">
+            © {new Date().getFullYear()} VTION. All rights reserved.
+          </div>
         </div>
       </footer>
     </div>

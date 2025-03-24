@@ -109,6 +109,9 @@ const Login = () => {
 
       <footer className="mt-8 text-white/60 text-sm max-w-md text-center px-4">
         Modules & Product cats' data to be populated basis subscription by Agency / Advertiser.
+        <div className="text-xs mt-2 text-white/50">
+          © {new Date().getFullYear()} VTION. All rights reserved.
+        </div>
       </footer>
 
       {/* Forgot Password Dialog */}

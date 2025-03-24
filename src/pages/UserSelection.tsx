@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Building2, Target, Newspaper, Search } from "lucide-react";
@@ -78,6 +77,10 @@ const UserSelection = () => {
               </Card>
             );
           })}
+        </div>
+        
+        <div className="text-center text-white/60 text-xs mt-10 pt-4">
+          © {new Date().getFullYear()} VTION. All rights reserved.
         </div>
       </div>
     </div>
