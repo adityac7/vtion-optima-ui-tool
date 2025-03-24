@@ -41,13 +41,13 @@ const Dashboard = () => {
       
       <div className="container mx-auto px-4 py-8 flex-1">
         <header className="text-center mb-8">
-          <div className="flex flex-col items-center justify-center mb-6">
+          <div className="flex items-center justify-center mb-6">
             <img 
               src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
               alt="VTION Logo" 
-              className="h-16 mb-2"
+              className="h-16"
             />
-            <span className="text-xl font-bold text-white">Connect</span>
+            <span className="text-xl font-bold text-white ml-2">Connect</span>
           </div>
           <h1 className="text-3xl font-bold mb-2 text-white">VTION Optima</h1>
           <p className="text-lg mb-4 text-white/80">
