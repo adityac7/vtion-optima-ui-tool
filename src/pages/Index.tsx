@@ -2,12 +2,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
-  Home, BarChart, Play, TrendingUp, 
   Building2, Target, Newspaper, Search 
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 
 // Feature components
@@ -69,11 +67,14 @@ const Index = () => {
               onClick={handleNavHome} 
               className="text-white"
             >
-              <img 
-                src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
-                alt="VTION Logo" 
-                className="h-8"
-              />
+              <div className="flex items-center">
+                <img 
+                  src="/lovable-uploads/f57d577c-4076-43a8-b9d5-40c7d55ef0bd.png" 
+                  alt="VTION Logo" 
+                  className="h-8"
+                />
+                <span className="text-xl font-bold ml-2">Connect</span>
+              </div>
             </Button>
           </div>
           
@@ -104,38 +105,8 @@ const Index = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="home" className="w-full">
-          <TabsList className="bg-white/10 backdrop-blur-md border border-white/20 p-1 mb-8 w-full justify-start">
-            <TabsTrigger value="home" className="data-[state=active]:bg-vtion-purple text-white">
-              <Home className="mr-2 h-4 w-4" /> Home
-            </TabsTrigger>
-            <TabsTrigger value="plan" className="data-[state=active]:bg-vtion-purple text-white">
-              <BarChart className="mr-2 h-4 w-4" /> Plan
-            </TabsTrigger>
-            <TabsTrigger value="activate" className="data-[state=active]:bg-vtion-purple text-white">
-              <Play className="mr-2 h-4 w-4" /> Activate
-            </TabsTrigger>
-            <TabsTrigger value="impact" className="data-[state=active]:bg-vtion-purple text-white">
-              <TrendingUp className="mr-2 h-4 w-4" /> Impact
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="home" className="mt-0">
-            <HomeSection userType={userType} />
-          </TabsContent>
-          
-          <TabsContent value="plan" className="mt-0">
-            <PlanSection userType={userType} />
-          </TabsContent>
-          
-          <TabsContent value="activate" className="mt-0">
-            <ActivateSection userType={userType} />
-          </TabsContent>
-          
-          <TabsContent value="impact" className="mt-0">
-            <ImpactSection />
-          </TabsContent>
-        </Tabs>
+        {/* Main content section - removed tabs navigation */}
+        <HomeSection userType={userType} />
       </main>
       
       <footer className="bg-white/5 backdrop-blur-md border-t border-white/10 py-4 mt-10">
