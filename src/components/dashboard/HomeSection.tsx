@@ -1,4 +1,3 @@
-
 import { 
   BarChart, Play, TrendingUp, Eye, 
   LineChart, Target, Users, TrendingDown
@@ -127,22 +126,22 @@ const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
     {
       title: "Brand Lift Surveys",
       description: "Measure impact on brand awareness, consideration, and preference",
-      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+      link: "#measure-form"
     },
     {
       title: "Multi-Touch Attribution",
       description: "Analyze touchpoint contribution across the customer journey",
-      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+      link: "#measure-form"
     },
     {
       title: "Conversion Impact Analysis",
       description: "Measure how media exposure drives conversions and sales",
-      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+      link: "#measure-form"
     },
     {
       title: "Campaign ROI Dashboard",
       description: "Comprehensive view of campaign performance and return on investment",
-      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+      link: "#measure-form"
     }
   ];
 
@@ -271,19 +270,17 @@ const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
           {measureFeatures.map((feature, index) => (
-            <a 
+            <div 
               key={index}
-              href={feature.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block hover:no-underline"
+              onClick={() => onMeasureClick && onMeasureClick()}
+              className="block hover:no-underline cursor-pointer"
             >
               <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
                 <h3 className="font-medium text-white mb-2">{feature.title}</h3>
                 <p className="text-white/70 text-sm">{feature.description}</p>
-                <div className="mt-3 text-sm text-vtion-purple">View Metrics →</div>
+                <div className="mt-3 text-sm text-vtion-purple">Open Form →</div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
