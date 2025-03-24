@@ -7,9 +7,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export interface HomeSectionProps {
   userType: string;
+  onMeasureClick?: () => void;
 }
 
-const HomeSection = ({ userType }: HomeSectionProps) => {
+const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
+  const handleCardClick = (link: string, title: string) => {
+    if (title === "OPTIMA Measure" && onMeasureClick) {
+      onMeasureClick();
+    } else {
+      window.open(link, "_blank");
+    }
+  };
+
   const modules = [
     {
       title: "OPTIMA Insights",
@@ -40,7 +49,7 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
       subtitle: "Track Exposure & Impact",
       description: "Measure campaign effectiveness through BLS, MTA and surveys",
       icon: <TrendingUp className="h-12 w-12 text-vtion-purple" />,
-      link: "https://app.powerbi.com/groups/me/reports/f0d401c5-a7db-4f23-9c76-16c907260eb6/ReportSection67460f9086d019b8882e?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi",
+      link: "#", // This link doesn't matter now since we're handling click in code
       color: "from-green-500/20 to-teal-400/20"
     },
   ];
@@ -141,14 +150,12 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
     <div className="space-y-8 animate-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {modules.map((module, index) => (
-          <a 
+          <div 
             key={index} 
-            href={module.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="block hover:no-underline"
+            onClick={() => handleCardClick(module.link, module.title)}
+            className="block hover:no-underline cursor-pointer"
           >
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300 h-full cursor-pointer">
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300 h-full">
               <CardHeader className="pb-2">
                 <div className="mb-4">{module.icon}</div>
                 <CardTitle className="text-xl text-white font-bold">
@@ -163,12 +170,12 @@ const HomeSection = ({ userType }: HomeSectionProps) => {
                   {module.description}
                 </CardDescription>
                 <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
-                  View Dashboard →
+                  {module.title === "OPTIMA Measure" ? "Open Form →" : "View Dashboard →"}
                 </div>
               </CardContent>
               <div className={`absolute inset-0 bg-gradient-to-r ${module.color} opacity-10 group-hover:opacity-25 transition-opacity duration-300`} />
             </Card>
-          </a>
+          </div>
         ))}
       </div>
 

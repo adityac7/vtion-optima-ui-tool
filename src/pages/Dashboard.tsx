@@ -44,7 +44,22 @@ const Dashboard = () => {
 
         <div className="flex-1 overflow-auto">
           <div className="mt-6 p-4">
-            <HomeSection userType={userType} />
+            {showMeasureForm ? (
+              <div className="space-y-4">
+                <button 
+                  onClick={() => setShowMeasureForm(false)}
+                  className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-md transition-colors duration-200 mb-4"
+                >
+                  ← Back to Dashboard
+                </button>
+                <MeasureForm />
+              </div>
+            ) : (
+              <HomeSection 
+                userType={userType} 
+                onMeasureClick={() => setShowMeasureForm(true)} 
+              />
+            )}
           </div>
         </div>
       </div>
