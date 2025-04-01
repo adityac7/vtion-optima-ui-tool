@@ -6,19 +6,94 @@ import PlanSection from "@/components/dashboard/PlanSection";
 import ImpactSection from "@/components/dashboard/ImpactSection";
 import MeasureForm from "@/components/dashboard/MeasureForm";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import CustomSurveyForm from "@/components/dashboard/CustomSurveyForm";
 
 const Dashboard = () => {
   const [searchParams] = useSearchParams();
   const [userType, setUserType] = useState<string>("advertiser");
   const [activeSection, setActiveSection] = useState<string>("home");
   const [showMeasureForm, setShowMeasureForm] = useState(false);
+  const [showCustomSurveyForm, setShowCustomSurveyForm] = useState(false);
+  
+  // Feature modules state
+  const [activeFeatureSet, setActiveFeatureSet] = useState<string | null>(null);
 
   useEffect(() => {
     const type = searchParams.get("type");
     if (type) {
       setUserType(type);
     }
+    
+    // Get feature parameter if available
+    const feature = searchParams.get("feature");
+    if (feature) {
+      setActiveFeatureSet(feature);
+    }
   }, [searchParams]);
+
+  const handleBackToHome = () => {
+    setActiveFeatureSet(null);
+    setShowMeasureForm(false);
+    setShowCustomSurveyForm(false);
+  };
+
+  const renderContent = () => {
+    if (showMeasureForm) {
+      return (
+        <div className="space-y-4">
+          <button 
+            onClick={handleBackToHome}
+            className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-md transition-colors duration-200 mb-4"
+          >
+            ← Back to Dashboard
+          </button>
+          <MeasureForm />
+        </div>
+      );
+    }
+    
+    if (showCustomSurveyForm) {
+      return (
+        <div className="space-y-4">
+          <button 
+            onClick={handleBackToHome}
+            className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-md transition-colors duration-200 mb-4"
+          >
+            ← Back to Dashboard
+          </button>
+          <CustomSurveyForm />
+        </div>
+      );
+    }
+
+    if (activeFeatureSet) {
+      return (
+        <div className="space-y-4">
+          <button 
+            onClick={handleBackToHome}
+            className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-md transition-colors duration-200 mb-4"
+          >
+            ← Back to Dashboard
+          </button>
+          <HomeSection 
+            userType={userType}
+            featureSet={activeFeatureSet}
+            onMeasureClick={() => setShowMeasureForm(true)}
+            onCustomSurveyClick={() => setShowCustomSurveyForm(true)}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <HomeSection 
+        userType={userType}
+        onFeatureSetChange={setActiveFeatureSet}
+        onMeasureClick={() => setShowMeasureForm(true)}
+        onCustomSurveyClick={() => setShowCustomSurveyForm(true)}
+      />
+    );
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
@@ -44,22 +119,7 @@ const Dashboard = () => {
 
         <div className="flex-1 overflow-auto">
           <div className="mt-6 p-4">
-            {showMeasureForm ? (
-              <div className="space-y-4">
-                <button 
-                  onClick={() => setShowMeasureForm(false)}
-                  className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-md transition-colors duration-200 mb-4"
-                >
-                  ← Back to Dashboard
-                </button>
-                <MeasureForm />
-              </div>
-            ) : (
-              <HomeSection 
-                userType={userType} 
-                onMeasureClick={() => setShowMeasureForm(true)} 
-              />
-            )}
+            {renderContent()}
           </div>
         </div>
       </div>

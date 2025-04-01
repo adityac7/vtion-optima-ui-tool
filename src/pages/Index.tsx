@@ -105,8 +105,11 @@ const Index = () => {
           </p>
         </div>
 
-        {/* Main content section - removed tabs navigation */}
-        <HomeSection userType={userType} />
+        {/* Main content section - use onFeatureSetChange to handle module navigation */}
+        <HomeSection 
+          userType={userType} 
+          onFeatureSetChange={(feature) => navigate(`/dashboard?feature=${feature}`)}
+        />
       </main>
       
       <footer className="bg-white/5 backdrop-blur-md border-t border-white/10 py-4 mt-10">

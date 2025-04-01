@@ -1,3 +1,4 @@
+
 import { 
   BarChart, Play, TrendingUp, Eye, 
   LineChart, Target, Users, TrendingDown
@@ -6,15 +7,39 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export interface HomeSectionProps {
   userType: string;
+  featureSet?: string | null;
+  onFeatureSetChange?: (featureSet: string) => void;
   onMeasureClick?: () => void;
+  onCustomSurveyClick?: () => void;
 }
 
-const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
+const HomeSection = ({ 
+  userType, 
+  featureSet = null,
+  onFeatureSetChange,
+  onMeasureClick,
+  onCustomSurveyClick
+}: HomeSectionProps) => {
+  
   const handleCardClick = (link: string, title: string) => {
-    if (title === "OPTIMA Measure" && onMeasureClick) {
-      onMeasureClick();
+    if (title === "OPTIMA Insights" && onFeatureSetChange) {
+      onFeatureSetChange("insights");
+    } else if (title === "OPTIMA Planner" && onFeatureSetChange) {
+      onFeatureSetChange("planner");
+    } else if (title === "OPTIMA Activate" && onFeatureSetChange) {
+      onFeatureSetChange("activate");
+    } else if (title === "OPTIMA Measure" && onFeatureSetChange) {
+      onFeatureSetChange("measure");
     } else {
       window.open(link, "_blank");
+    }
+  };
+
+  const handleMeasureFeatureClick = (feature: string) => {
+    if (feature === "Full Funnel Measurement" && onMeasureClick) {
+      onMeasureClick();
+    } else if (feature === "Custom Surveys" && onCustomSurveyClick) {
+      onCustomSurveyClick();
     }
   };
 
@@ -48,7 +73,7 @@ const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
       subtitle: "Track Exposure & Impact",
       description: "Measure campaign effectiveness through BLS, MTA and surveys",
       icon: <TrendingUp className="h-12 w-12 text-vtion-purple" />,
-      link: "#", // This link doesn't matter now since we're handling click in code
+      link: "#", 
       color: "from-green-500/20 to-teal-400/20"
     },
   ];
@@ -101,50 +126,194 @@ const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
 
   const activateFeatures = [
     {
-      title: "Custom Audience Creation",
-      description: "Build high-value audience segments based on behavioral and purchase patterns",
-      link: "https://proddashboard.vtion.in/adhoc_requests/"
+      title: "Audience Builder – New Segment Planner",
+      description: "Prebuilt 270+ Segments (demographics, behavior, geography)",
+      link: "https://www.vtion.ai/audience-sets/"
     },
     {
-      title: "Multi-Platform Activation",
-      description: "Activate audiences seamlessly across Meta, Google, DV360, and other DSPs",
-      link: "https://proddashboard.vtion.in/adhoc_requests/"
-    },
-    {
-      title: "Audience Enrichment",
-      description: "Enhance first-party data with VTION's rich behavioral insights",
-      link: "https://proddashboard.vtion.in/adhoc_requests/"
-    },
-    {
-      title: "Real-time Campaign Monitoring",
-      description: "Track audience activation and engagement in real-time across platforms",
+      title: "Custom Audience Activation",
+      description: "Activate audiences seamlessly across multiple platforms and channels",
       link: "https://proddashboard.vtion.in/adhoc_requests/"
     }
   ];
 
   const measureFeatures = [
     {
-      title: "Brand Lift Surveys",
+      title: "Full Funnel Measurement",
       description: "Measure impact on brand awareness, consideration, and preference",
-      link: "#measure-form"
+      link: "#"
     },
     {
-      title: "Multi-Touch Attribution",
-      description: "Analyze touchpoint contribution across the customer journey",
-      link: "#measure-form"
-    },
-    {
-      title: "Conversion Impact Analysis",
-      description: "Measure how media exposure drives conversions and sales",
-      link: "#measure-form"
-    },
-    {
-      title: "Campaign ROI Dashboard",
-      description: "Comprehensive view of campaign performance and return on investment",
-      link: "#measure-form"
+      title: "Custom Surveys",
+      description: "Create custom surveys to measure campaign effectiveness",
+      link: "#"
     }
   ];
 
+  // If we're showing a specific feature set, render only that section
+  if (featureSet) {
+    switch(featureSet) {
+      case "insights":
+        return (
+          <div className="space-y-8 animate-fade-in">
+            <h2 className="text-2xl font-bold text-white">OPTIMA Insights Features</h2>
+            <p className="text-white/90 mb-6">
+              OPTIMA Insights analyzes digital and e-commerce behavior for comprehensive audience identification.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              {insightFeatures.map((feature, index) => (
+                <a 
+                  key={index}
+                  href={feature.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:no-underline"
+                >
+                  <Card className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300 h-full">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-xl text-white font-bold">
+                        {feature.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-white/90">
+                        {feature.description}
+                      </CardDescription>
+                      <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
+                        View Analysis →
+                      </div>
+                    </CardContent>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-400/20 opacity-10 group-hover:opacity-25 transition-opacity duration-300" />
+                  </Card>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+        
+      case "planner":
+        return (
+          <div className="space-y-8 animate-fade-in">
+            <h2 className="text-2xl font-bold text-white">OPTIMA Planner Features</h2>
+            <p className="text-white/90 mb-6">
+              OPTIMA Planner helps optimize your media planning with data-driven insights for 
+              maximizing reach and impact across digital touchpoints.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              {plannerFeatures.map((feature, index) => (
+                <a 
+                  key={index}
+                  href={feature.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:no-underline"
+                >
+                  <Card className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300 h-full">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-xl text-white font-bold">
+                        {feature.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-white/90">
+                        {feature.description}
+                      </CardDescription>
+                      <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
+                        View Planner →
+                      </div>
+                    </CardContent>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-indigo-400/20 opacity-10 group-hover:opacity-25 transition-opacity duration-300" />
+                  </Card>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+        
+      case "activate":
+        return (
+          <div className="space-y-8 animate-fade-in">
+            <h2 className="text-2xl font-bold text-white">OPTIMA Activate Features</h2>
+            <p className="text-white/90 mb-6">
+              OPTIMA Activate enables seamless audience activation across multiple platforms and channels.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              {activateFeatures.map((feature, index) => (
+                <a 
+                  key={index}
+                  href={feature.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:no-underline"
+                >
+                  <Card className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300 h-full">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-xl text-white font-bold">
+                        {feature.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-white/90">
+                        {feature.description}
+                      </CardDescription>
+                      <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
+                        Activate Now →
+                      </div>
+                    </CardContent>
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-400/20 opacity-10 group-hover:opacity-25 transition-opacity duration-300" />
+                  </Card>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+        
+      case "measure":
+        return (
+          <div className="space-y-8 animate-fade-in">
+            <h2 className="text-2xl font-bold text-white">OPTIMA Measure Features</h2>
+            <p className="text-white/90 mb-6">
+              OPTIMA Measure provides comprehensive analytics to evaluate campaign performance and ROI.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              {measureFeatures.map((feature, index) => (
+                <div 
+                  key={index}
+                  onClick={() => handleMeasureFeatureClick(feature.title)}
+                  className="block hover:no-underline cursor-pointer"
+                >
+                  <Card className="bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden group hover:scale-105 transition-all duration-300 h-full">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-xl text-white font-bold">
+                        {feature.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-white/90">
+                        {feature.description}
+                      </CardDescription>
+                      <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
+                        Open Form →
+                      </div>
+                    </CardContent>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-teal-400/20 opacity-10 group-hover:opacity-25 transition-opacity duration-300" />
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+        
+      default:
+        return null;
+    }
+  }
+
+  // Main dashboard view (module cards)
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -169,7 +338,7 @@ const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
                   {module.description}
                 </CardDescription>
                 <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
-                  {module.title === "OPTIMA Measure" ? "Open Form →" : "View Dashboard →"}
+                  {module.title === "OPTIMA Measure" ? "View Features →" : "View Features →"}
                 </div>
               </CardContent>
               <div className={`absolute inset-0 bg-gradient-to-r ${module.color} opacity-10 group-hover:opacity-25 transition-opacity duration-300`} />
@@ -178,120 +347,12 @@ const HomeSection = ({ userType, onMeasureClick }: HomeSectionProps) => {
         ))}
       </div>
 
-      {/* OPTIMA Insights Features */}
-      <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
-        <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Insights Features</h2>
-        <p className="text-white/90 mb-6">
-          OPTIMA Insights analyzes digital and e-commerce behavior for comprehensive audience identification,
-          tailored for <span className="font-semibold text-vtion-purple">{userType}s</span>.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          {insightFeatures.map((feature, index) => (
-            <a 
-              key={index}
-              href={feature.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block hover:no-underline"
-            >
-              <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
-                <h3 className="font-medium text-white mb-2">{feature.title}</h3>
-                <p className="text-white/70 text-sm">{feature.description}</p>
-                <div className="mt-3 text-sm text-vtion-purple">View Analysis →</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* OPTIMA Planner Features */}
-      <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
-        <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Planner Features</h2>
-        <p className="text-white/90 mb-6">
-          OPTIMA Planner helps optimize your media planning with data-driven insights for 
-          maximizing reach and impact across digital touchpoints for 
-          <span className="font-semibold text-vtion-purple"> {userType}s</span>.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          {plannerFeatures.map((feature, index) => (
-            <a 
-              key={index}
-              href={feature.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block hover:no-underline"
-            >
-              <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
-                <h3 className="font-medium text-white mb-2">{feature.title}</h3>
-                <p className="text-white/70 text-sm">{feature.description}</p>
-                <div className="mt-3 text-sm text-vtion-purple">View Planner →</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* OPTIMA Activate Features */}
-      <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
-        <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Activate Features</h2>
-        <p className="text-white/90 mb-6">
-          OPTIMA Activate enables seamless audience activation across multiple platforms and channels,
-          empowering <span className="font-semibold text-vtion-purple">{userType}s</span> to reach high-value audiences.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          {activateFeatures.map((feature, index) => (
-            <a 
-              key={index}
-              href={feature.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block hover:no-underline"
-            >
-              <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
-                <h3 className="font-medium text-white mb-2">{feature.title}</h3>
-                <p className="text-white/70 text-sm">{feature.description}</p>
-                <div className="mt-3 text-sm text-vtion-purple">Activate Now →</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* OPTIMA Measure Features */}
-      <div className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg mt-8">
-        <h2 className="text-2xl font-bold mb-4 text-white">OPTIMA Measure Features</h2>
-        <p className="text-white/90 mb-6">
-          OPTIMA Measure provides comprehensive analytics to evaluate campaign performance and ROI,
-          giving <span className="font-semibold text-vtion-purple">{userType}s</span> actionable insights.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          {measureFeatures.map((feature, index) => (
-            <div 
-              key={index}
-              onClick={() => onMeasureClick && onMeasureClick()}
-              className="block hover:no-underline cursor-pointer"
-            >
-              <div className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/30">
-                <h3 className="font-medium text-white mb-2">{feature.title}</h3>
-                <p className="text-white/70 text-sm">{feature.description}</p>
-                <div className="mt-3 text-sm text-vtion-purple">Open Form →</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="bg-gradient-to-r from-vtion-purple/20 to-transparent p-6 rounded-lg border border-white/10">
         <h2 className="text-xl font-bold mb-2 text-white">About VTION Connect</h2>
         <p className="text-white/80">
           VTION Connect's OPTIMA Suite is a comprehensive Audience Intelligence Platform designed for 
-          digital agencies, advertisers, and brands. Navigate through the tabs above to explore different 
-          modules and features tailored to your needs as a{" "}
-          <span className="font-medium text-vtion-purple">{userType}</span>.
+          digital agencies, advertisers, and brands. Navigate through the modules above to explore different 
+          features specific to your needs.
         </p>
       </div>
     </div>
