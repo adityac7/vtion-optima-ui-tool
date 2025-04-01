@@ -49,7 +49,7 @@ const HomeSection = ({
       subtitle: "Understand consumer behaviour",
       description: "Track competition SOV, and analyse e-commerce journeys",
       icon: <BarChart className="h-12 w-12 text-vtion-purple" />,
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=e3d839cf-5629-4a86-80b7-4406f9c35a7b",
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=e3d839cf-5629-4a86-80b7-4406f9c35a7b&noSignUpCheck=1",
       color: "from-blue-500/20 to-cyan-400/20"
     },
     {
@@ -57,7 +57,7 @@ const HomeSection = ({
       subtitle: "Select digital touchpoints",
       description: "Plan incremental reach and analyze HML audience classification",
       icon: <LineChart className="h-12 w-12 text-vtion-purple" />,
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a",
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1",
       color: "from-purple-500/20 to-indigo-400/20"
     },
     {
@@ -82,22 +82,22 @@ const HomeSection = ({
     {
       title: "Digital Usage Analysis",
       description: "Identify digital penetration across regions and demographics",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=e3d839cf-5629-4a86-80b7-4406f9c35a7b"
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=e3d839cf-5629-4a86-80b7-4406f9c35a7b&noSignUpCheck=1"
     },
     {
       title: "Digital Behavior Tracking",
       description: "Identify touchpoints by target group (TG) and market segmentation",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=af0c1574-89c7-4022-a4d9-9df23731de93"
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=af0c1574-89c7-4022-a4d9-9df23731de93&noSignUpCheck=1"
     },
     {
       title: "Digital Share of Voice Analysis",
       description: "Competitive benchmarking for brand presence and ad spend efficiency",
-      link: "https://app.powerbi.com/groups/88869307-8e64-44b5-9131-1c972cfc8596/reports/8e262cf5-80ee-4a64-a8be-2630d516d681/ReportSection0fe7429ed681a2aa2ad3?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi"
+      link: "https://app.powerbi.com/groups/88869307-8e64-44b5-9131-1c972cfc8596/reports/8e262cf5-80ee-4a64-a8be-2630d516d681/ReportSection0fe7429ed681a2aa2ad3?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&experience=power-bi&noSignUpCheck=1"
     },
     {
       title: "E-commerce Behavior Analysis",
       description: "Identify intent-driven audiences based on product searches and cart behavior",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=50b999e1-312d-45b5-9e89-8429a3dfc7b4"
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=50b999e1-312d-45b5-9e89-8429a3dfc7b4&noSignUpCheck=1"
     }
   ];
 
@@ -105,22 +105,22 @@ const HomeSection = ({
     {
       title: "Digital Reach Planner",
       description: "Plan optimal reach across digital platforms and touchpoints",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
     },
     {
       title: "Audience Classification",
       description: "Analyze High, Medium, and Low value audience segments for targeting",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
     },
     {
       title: "Incremental Reach Analysis",
       description: "Identify platforms that provide maximum incremental reach for your budget",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
     },
     {
       title: "Campaign Budget Allocator",
       description: "Optimize budget allocation across platforms to maximize campaign impact",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a"
+      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
     }
   ];
 
