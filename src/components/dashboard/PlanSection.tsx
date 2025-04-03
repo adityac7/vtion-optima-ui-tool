@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { 
   Smartphone, TrendingUp, BarChart3, ShoppingCart,
@@ -54,7 +55,9 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
   const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042'];
 
   useEffect(() => {
-    // Define standard planning cards for all user types
+    // Define planning cards for all user types
+    const incrementalReachLink = "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1";
+    
     setPlanningCards([
       {
         id: "digital-behavior",
@@ -64,7 +67,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
         tooltipText: "Deep insights into how users interact with digital platforms",
         modalContent: "Digital Behavior analysis provides comprehensive insights into how users interact with websites, apps, and other digital touchpoints. Track engagement patterns, session duration, and user flows.",
         chartType: "bar",
-        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+        link: incrementalReachLink
       },
       {
         id: "intent-signals",
@@ -74,7 +77,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
         tooltipText: "Capture signals that indicate user purchase readiness",
         modalContent: "Intent Signals help identify users who are actively researching products or services. Understand where your potential customers are in their buying journey and target them at the right moment.",
         chartType: "pie",
-        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+        link: incrementalReachLink
       },
       {
         id: "incremental-reach",
@@ -84,7 +87,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
         tooltipText: "Plan media that reaches new, unduplicated audiences",
         modalContent: "The Incremental Reach Planner helps optimize media plans to reach new, unduplicated audiences. Maximize the effectiveness of your media budgets by reducing waste on audience overlap.",
         chartType: "line",
-        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+        link: incrementalReachLink
       },
       {
         id: "hml-audience",
@@ -94,7 +97,7 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
         tooltipText: "Categorize audiences by usage patterns and engagement levels",
         modalContent: "HML (Heavy, Medium, Low) Audience Classification helps identify and segment your audiences based on their engagement levels and value to your business. Target high-value segments efficiently or create strategies to move users up the value chain.",
         chartType: "bar",
-        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+        link: incrementalReachLink
       }
     ]);
   }, [userType]);

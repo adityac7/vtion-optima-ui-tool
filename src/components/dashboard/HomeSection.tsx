@@ -1,4 +1,3 @@
-
 import { 
   BarChart, Play, TrendingUp, Eye, 
   LineChart, Target, Users, TrendingDown
@@ -150,7 +149,6 @@ const HomeSection = ({
     }
   ];
 
-  // If we're showing a specific feature set, render only that section
   if (featureSet) {
     switch(featureSet) {
       case "insights":
@@ -313,7 +311,6 @@ const HomeSection = ({
     }
   }
 
-  // Main dashboard view (module cards)
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -338,7 +335,7 @@ const HomeSection = ({
                   {module.description}
                 </CardDescription>
                 <div className="mt-4 inline-block text-vtion-purple hover:text-white transition-colors duration-200">
-                  {module.title === "OPTIMA Measure" ? "View Features →" : "View Features →"}
+                  View Features →
                 </div>
               </CardContent>
               <div className={`absolute inset-0 bg-gradient-to-r ${module.color} opacity-10 group-hover:opacity-25 transition-opacity duration-300`} />

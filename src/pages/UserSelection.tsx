@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Building2, Target, Newspaper, Search } from "lucide-react";
@@ -9,16 +10,16 @@ const UserSelection = () => {
 
   const userTypes = [
     {
-      id: "advertiser",
-      title: "Advertiser",
+      id: "user",
+      title: "User",
       icon: Building2,
-      description: "For brands and businesses",
+      description: "For platform users",
     },
     {
-      id: "agency",
-      title: "Agency",
+      id: "partner",
+      title: "Partner",
       icon: Target,
-      description: "For marketing agencies",
+      description: "For platform partners",
     },
     {
       id: "publisher",

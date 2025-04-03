@@ -15,7 +15,7 @@ import ImpactSection from "@/components/dashboard/ImpactSection";
 import HomeSection from "@/components/dashboard/HomeSection";
 
 const Index = () => {
-  const [userType, setUserType] = useState<string>("advertiser");
+  const [userType, setUserType] = useState<string>("user");
   const navigate = useNavigate();
   const location = useLocation();
   const { toast } = useToast();
@@ -34,8 +34,8 @@ const Index = () => {
 
   const getUserIcon = () => {
     switch(userType) {
-      case "advertiser": return <Building2 className="w-5 h-5 text-vtion-purple" />;
-      case "agency": return <Target className="w-5 h-5 text-vtion-purple" />;
+      case "user": return <Building2 className="w-5 h-5 text-vtion-purple" />;
+      case "partner": return <Target className="w-5 h-5 text-vtion-purple" />;
       case "publisher": return <Newspaper className="w-5 h-5 text-vtion-purple" />;
       case "data-partner": return <Search className="w-5 h-5 text-vtion-purple" />;
       default: return <Building2 className="w-5 h-5 text-vtion-purple" />;
@@ -44,11 +44,11 @@ const Index = () => {
 
   const getUserTitle = () => {
     switch(userType) {
-      case "advertiser": return "Advertiser";
-      case "agency": return "Agency";
+      case "user": return "User";
+      case "partner": return "Partner";
       case "publisher": return "Publisher";
       case "data-partner": return "Data Partner";
-      default: return "Advertiser";
+      default: return "User";
     }
   };
 
