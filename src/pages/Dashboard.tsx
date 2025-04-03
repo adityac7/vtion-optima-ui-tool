@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import HomeSection from "@/components/dashboard/HomeSection";
@@ -9,7 +10,7 @@ import CustomSurveyForm from "@/components/dashboard/CustomSurveyForm";
 
 const Dashboard = () => {
   const [searchParams] = useSearchParams();
-  const [userType, setUserType] = useState<string>("advertiser");
+  const [userType, setUserType] = useState<string>("user");
   const [activeSection, setActiveSection] = useState<string>("home");
   const [showMeasureForm, setShowMeasureForm] = useState(false);
   const [showCustomSurveyForm, setShowCustomSurveyForm] = useState(false);
@@ -112,7 +113,7 @@ const Dashboard = () => {
           </div>
           <h1 className="text-3xl font-bold mb-2 text-white">VTION Optima</h1>
           <p className="text-lg mb-4 text-white/80">
-            Welcome, <span className="font-semibold text-vtion-purple capitalize">{userType}</span>
+            Welcome to your <span className="font-semibold text-vtion-purple">Data-Driven Platform</span>
           </p>
         </header>
 
@@ -127,7 +128,7 @@ const Dashboard = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-white/60 text-sm mb-4 md:mb-0">
-              Modules & Product cats' data to be populated basis subscription by Agency / Advertiser.
+              Modules & Product data based on your platform subscription.
             </div>
             <div className="text-right">
               <div className="text-white/80 text-sm font-medium">Unlocking Insights</div>

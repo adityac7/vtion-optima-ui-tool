@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { 
   Smartphone, TrendingUp, BarChart3, ShoppingCart,
@@ -55,118 +54,49 @@ const PlanSection = ({ userType }: PlanSectionProps) => {
   const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042'];
 
   useEffect(() => {
-    // Define different cards based on user type
-    if (userType === "advertiser") {
-      setPlanningCards([
-        {
-          id: "digital-behavior",
-          title: "Digital Behavior",
-          description: "Analyze online user behavior patterns across platforms",
-          icon: <Smartphone className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Deep insights into how users interact with digital platforms",
-          modalContent: "Digital Behavior analysis provides comprehensive insights into how users interact with websites, apps, and other digital touchpoints. Track engagement patterns, session duration, and user flows.",
-          chartType: "bar",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        },
-        {
-          id: "intent-signals",
-          title: "Intent Signals",
-          description: "Identify purchase intent signals from user behavior",
-          icon: <Target className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Capture signals that indicate user purchase readiness",
-          modalContent: "Intent Signals help identify users who are actively researching products or services similar to yours. Understand where your potential customers are in their buying journey and target them at the right moment.",
-          chartType: "pie",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        },
-        {
-          id: "advertising-sov",
-          title: "Advertising SOV",
-          description: "Measure share of voice across advertising channels",
-          icon: <BarChart3 className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Compare your advertising presence against competitors",
-          modalContent: "Advertising Share of Voice (SOV) measures how your brand's presence compares to competitors across various advertising channels. Identify opportunities to increase visibility in underserved channels.",
-          chartType: "line",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        },
-        {
-          id: "ecommerce-journeys",
-          title: "E-commerce Journeys",
-          description: "Map customer journeys through e-commerce platforms",
-          icon: <ShoppingCart className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Track customer paths from discovery to purchase",
-          modalContent: "E-commerce Journeys mapping helps you understand the complete customer path from product discovery to purchase. Identify friction points, abandonment reasons, and opportunities to optimize conversion rates.",
-          chartType: "bar",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        }
-      ]);
-    } else if (userType === "agency") {
-      setPlanningCards([
-        {
-          id: "digital-behavior",
-          title: "Digital Behavior",
-          description: "Comprehensive analysis of audience digital interactions",
-          icon: <Smartphone className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "In-depth view of how audiences interact across digital touchpoints",
-          modalContent: "Digital Behavior analysis for agencies provides multi-dimensional views of how different audience segments interact across digital platforms. Use these insights for more targeted media planning across client campaigns.",
-          chartType: "bar",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        },
-        {
-          id: "digital-intender",
-          title: "Digital Intender Behavior",
-          description: "Track behavior of users likely to convert",
-          icon: <Target className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Focus on high-propensity users across your client base",
-          modalContent: "Digital Intender Behavior analysis identifies users who show strong purchase intent signals. This helps agencies develop more effective targeting strategies for clients in various industries.",
-          chartType: "pie",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        },
-        {
-          id: "incremental-reach",
-          title: "Incremental Reach Planner",
-          description: "Optimize media plans for maximum incremental reach",
-          icon: <LineChart className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Plan media that reaches new, unduplicated audiences",
-          modalContent: "The Incremental Reach Planner helps agencies optimize media plans to reach new, unduplicated audiences. Maximize the effectiveness of your clients' media budgets by reducing waste on audience overlap.",
-          chartType: "line",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        },
-        {
-          id: "ott-planner",
-          title: "OTT & Content Planner",
-          description: "Plan campaigns across OTT and streaming platforms",
-          icon: <PlayCircle className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Target audiences on streaming and OTT platforms",
-          modalContent: "The OTT & Content Planner helps agencies develop effective strategies for reaching audiences on streaming platforms. Get insights on content preferences, viewing patterns, and optimal ad placements.",
-          chartType: "bar",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        }
-      ]);
-    } else {
-      // Default cards for other user types
-      setPlanningCards([
-        {
-          id: "digital-behavior",
-          title: "Digital Behavior",
-          description: "Analyze online user behavior patterns",
-          icon: <Smartphone className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Understand how users interact with digital platforms",
-          modalContent: "Digital Behavior analysis provides insights into how users interact with digital platforms. This data can help inform your planning strategies.",
-          chartType: "bar",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        },
-        {
-          id: "audience-insights",
-          title: "Audience Insights",
-          description: "Comprehensive audience demographic and behavioral data",
-          icon: <Target className="h-12 w-12 text-vtion-purple" />,
-          tooltipText: "Detailed data about your audience segments",
-          modalContent: "Audience Insights provides detailed information about your audience segments, including demographics, interests, and behaviors.",
-          chartType: "pie",
-          link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
-        }
-      ]);
-    }
+    // Define standard planning cards for all user types
+    setPlanningCards([
+      {
+        id: "digital-behavior",
+        title: "Digital Behavior",
+        description: "Analyze online user behavior patterns across platforms",
+        icon: <Smartphone className="h-12 w-12 text-vtion-purple" />,
+        tooltipText: "Deep insights into how users interact with digital platforms",
+        modalContent: "Digital Behavior analysis provides comprehensive insights into how users interact with websites, apps, and other digital touchpoints. Track engagement patterns, session duration, and user flows.",
+        chartType: "bar",
+        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+      },
+      {
+        id: "intent-signals",
+        title: "Intent Signals",
+        description: "Identify purchase intent signals from user behavior",
+        icon: <Target className="h-12 w-12 text-vtion-purple" />,
+        tooltipText: "Capture signals that indicate user purchase readiness",
+        modalContent: "Intent Signals help identify users who are actively researching products or services. Understand where your potential customers are in their buying journey and target them at the right moment.",
+        chartType: "pie",
+        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+      },
+      {
+        id: "incremental-reach",
+        title: "Incremental Reach Planner",
+        description: "Optimize media plans for maximum incremental reach",
+        icon: <LineChart className="h-12 w-12 text-vtion-purple" />,
+        tooltipText: "Plan media that reaches new, unduplicated audiences",
+        modalContent: "The Incremental Reach Planner helps optimize media plans to reach new, unduplicated audiences. Maximize the effectiveness of your media budgets by reducing waste on audience overlap.",
+        chartType: "line",
+        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+      },
+      {
+        id: "hml-audience",
+        title: "HML Audience Classification",
+        description: "Analyze High, Medium, and Low value audience segments",
+        icon: <BarChart3 className="h-12 w-12 text-vtion-purple" />,
+        tooltipText: "Categorize audiences by usage patterns and engagement levels",
+        modalContent: "HML (Heavy, Medium, Low) Audience Classification helps identify and segment your audiences based on their engagement levels and value to your business. Target high-value segments efficiently or create strategies to move users up the value chain.",
+        chartType: "bar",
+        link: "https://app.powerbi.com/links/Z6HoAEu-h5?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&noSignUpCheck=1"
+      }
+    ]);
   }, [userType]);
 
   const renderChart = (chartType: string) => {

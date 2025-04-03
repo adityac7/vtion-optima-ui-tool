@@ -103,12 +103,12 @@ const HomeSection = ({
 
   const plannerFeatures = [
     {
-      title: "Digital Reach Planner",
+      title: "Incremental Reach Planner",
       description: "Plan optimal reach across digital platforms and touchpoints",
       link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
     },
     {
-      title: "Audience Classification",
+      title: "HML (Heavy, Medium, Low) Audience Classification",
       description: "Analyze High, Medium, and Low value audience segments for targeting",
       link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
     },
@@ -351,8 +351,8 @@ const HomeSection = ({
         <h2 className="text-xl font-bold mb-2 text-white">About VTION Connect</h2>
         <p className="text-white/80">
           VTION Connect's OPTIMA Suite is a comprehensive Audience Intelligence Platform designed for 
-          digital agencies, advertisers, and brands. Navigate through the modules above to explore different 
-          features specific to your needs.
+          data-driven planning, activation, and measurement. Navigate through the modules above to explore 
+          different features specific to your needs.
         </p>
       </div>
     </div>
