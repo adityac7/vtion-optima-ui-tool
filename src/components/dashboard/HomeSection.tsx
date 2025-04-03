@@ -110,16 +110,6 @@ const HomeSection = ({
       title: "HML (Heavy, Medium, Low) Audience Classification",
       description: "Analyze High, Medium, and Low value audience segments for targeting",
       link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
-    },
-    {
-      title: "Incremental Reach Analysis",
-      description: "Identify platforms that provide maximum incremental reach for your budget",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
-    },
-    {
-      title: "Campaign Budget Allocator",
-      description: "Optimize budget allocation across platforms to maximize campaign impact",
-      link: "https://app.powerbi.com/links/FjJfka92ae?ctid=dbc53595-801f-44ba-95b3-181c4b278c83&pbi_source=linkShare&bookmarkGuid=d5a34e11-51a0-4371-a7c9-2655fecd525a&noSignUpCheck=1"
     }
   ];
 
